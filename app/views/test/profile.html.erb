@@ -1,0 +1,9 @@
+<h1>プロフィール</h1>
+
+<%= link_to_update "戻る", :url => '/test' %><br>
+
+<p>
+<a href="<%= current_owner.profile_url %>" target="_blank"><img src="<%= current_owner.thumbnail_url %>" border="0"></a><br>
+mixi_id: <%= current_owner.mixi_id %><br>
+nickname: <%= current_owner.nickname %><br>
+</p>

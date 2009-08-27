@@ -1,0 +1,1313 @@
+# Logfile created on Thu Aug 27 13:22:24 +0900 2009  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (104.8ms)[0m   [0;1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (34.7ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090816121100)
+  [4;36;1mSQL (6.7ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `mixi_id` varchar(255) NOT NULL, `nickname` varchar(255), `profile_url` varchar(255), `thumbnail_url` varchar(255), `joined_at` datetime, `logged_at` datetime, `deleted_at` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (31.9ms)[0m   [0mCREATE UNIQUE INDEX `index_users_on_mixi_id` ON `users` (`mixi_id`)[0m
+  [4;36;1mSQL (9.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090816121100')[0m
+Migrating to CreateFriends (20090816121110)
+  [4;35;1mSQL (11.2ms)[0m   [0mCREATE TABLE `friends` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `friend_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (36.9ms)[0m   [0;1mCREATE UNIQUE INDEX `index_friends_on_user_id_and_friend_id` ON `friends` (`user_id`, `friend_id`)[0m
+  [4;35;1mSQL (5.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090816121110')[0m
+Migrating to CreateSessions (20090816121127)
+  [4;36;1mSQL (17.5ms)[0m   [0;1mCREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (20.9ms)[0m   [0mCREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)[0m
+  [4;36;1mSQL (39.2ms)[0m   [0;1mCREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)[0m
+  [4;35;1mSQL (7.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090816121127')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mSHOW FIELDS FROM `friends`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `friends`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `friends`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mdescribe `sessions`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `sessions`[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#index to xml (for 192.168.11.110 at 2009-08-27 14:08:20) [GET]
+  Parameters: {"format"=>"xml", "action"=>"index", "controller"=>"gadget"}
+Rendering gadget/index
+Completed in 38ms (View: 29, DB: 1) | 200 OK [http://192.168.11.111/gadget.xml]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#index to xml (for 192.168.11.110 at 2009-08-27 14:52:20) [GET]
+  Parameters: {"format"=>"xml", "action"=>"index", "controller"=>"gadget"}
+Rendering gadget/index
+Completed in 37ms (View: 28, DB: 0) | 200 OK [http://base.test.cyworks.jp/gadget.xml]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#register (for 192.168.11.100 at 2009-08-27 14:52:34) [POST]
+  Parameters: {"viewer"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}", "friends"=>"[{\"mixi_id\":\"23612632\",\"thumbnail_url\":null},{\"mixi_id\":\"12874032\",\"nickname\":\"しゅうたろう\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/40/32/12874032_478443709s.jpg\"},{\"mixi_id\":\"6992542\",\"nickname\":\"NOV\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/42/6992542_3079675742s.jpg\"},{\"mixi_id\":\"4856102\",\"nickname\":\"Tien\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/2/4856102_4201823336s.jpg\"},{\"mixi_id\":\"2892405\",\"nickname\":\"ひろせ31\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/24/5/2892405_1293080365s.jpg\"},{\"mixi_id\":\"2273655\",\"nickname\":\"elastico\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/36/55/2273655_3990015965s.jpg\"},{\"mixi_id\":\"1576010\",\"nickname\":\"のむ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/60/10/1576010_1283611056s.jpg\"},{\"mixi_id\":\"1432568\",\"nickname\":\"よしてつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/68/1432568_3210904553s.jpg\"},{\"mixi_id\":\"1012572\",\"nickname\":\"きびたん＠SHANPY♪\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/72/1012572_4009106640s.jpg\"},{\"mixi_id\":\"821443\",\"nickname\":\"う−.*･゜\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/14/43/821443_3326428246s.jpg\"},{\"mixi_id\":\"727131\",\"nickname\":\"K @ M i  hentaisan\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/31/727131_3532985331s.jpg\"},{\"mixi_id\":\"707790\",\"nickname\":\"ぴょこぽん\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/77/90/707790_3967859727s.jpg\"},{\"mixi_id\":\"527171\",\"nickname\":\"tomoya\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/71/527171_3357683263s.jpg\"},{\"mixi_id\":\"376185\",\"nickname\":\"加藤＠ネオ虎\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/85/376185_3235521013s.jpg\"},{\"mixi_id\":\"272391\",\"nickname\":\"西小倉パンデイロ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/23/91/272391_2331921916s.jpg\"},{\"mixi_id\":\"238403\",\"nickname\":\"おがつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/84/3/238403_3526442746s.jpg\"},{\"mixi_id\":\"193945\",\"nickname\":\"ophelia\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/39/45/193945_1861259059s.jpg\"},{\"mixi_id\":\"165158\",\"nickname\":\"nog\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/51/58/165158_3253036858s.jpg\"},{\"mixi_id\":\"145381\",\"nickname\":\"keik\",\"thumbnail_url\":\"http://img.mixi.jp/img/basic/common/noimage_member76.gif\"},{\"mixi_id\":\"124734\",\"nickname\":\"あふろ(onk)\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/47/34/124734_1799261299s.jpg\"},{\"mixi_id\":\"90352\",\"nickname\":\"nom\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/3/52/90352_1017462255s.jpg\"},{\"mixi_id\":\"68006\",\"nickname\":\"気まぐれタヒチ風うみ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/80/6/68006_1663796429s.jpg\"},{\"mixi_id\":\"65897\",\"nickname\":\"Hd3\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/58/97/65897_618022769s.jpg\"},{\"mixi_id\":\"46490\",\"nickname\":\"いのへい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/64/90/46490_2819739811s.jpg\"},{\"mixi_id\":\"23783\",\"nickname\":\"Magic☆\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/37/83/23783_3493635382s.jpg\"},{\"mixi_id\":\"271\",\"nickname\":\"隊長\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/71/271_1616171260s.jpg\"},{\"mixi_id\":\"267\",\"nickname\":\"antimo\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/67/267_920079190s.jpg\"},{\"mixi_id\":\"128\",\"nickname\":\"クラビノ・イーター\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/28/128_170347820s.jpg\"},{\"mixi_id\":\"118\",\"nickname\":\"saeco\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/18/118_2295403409s.jpg\"},{\"mixi_id\":\"112\",\"nickname\":\"yuki naito\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/12/112_3453845262s.jpg\"}]", "action"=>"register", "controller"=>"gadget", "owner"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}"}
+  [4;36;1mUser Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:52:35') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (0.9ms)[0m   [0mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:52:35', '47028', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:52:35')[0m
+  [4;36;1mSQL (3.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg', `nickname` = 'あらい', `updated_at` = '2009-08-27 05:52:35' WHERE `id` = 1[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:52:35') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+
+NameError (uninitialized constant GadgetController::Setting):
+  app/controllers/gadget_controller.rb:24:in `register'
+
+Rendered rescues/_trace (59.0ms)
+Rendered rescues/_request_and_response (4.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#register (for 192.168.11.100 at 2009-08-27 14:53:16) [POST]
+  Parameters: {"viewer"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}", "friends"=>"[{\"mixi_id\":\"23612632\",\"thumbnail_url\":null},{\"mixi_id\":\"12874032\",\"nickname\":\"しゅうたろう\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/40/32/12874032_478443709s.jpg\"},{\"mixi_id\":\"6992542\",\"nickname\":\"NOV\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/42/6992542_3079675742s.jpg\"},{\"mixi_id\":\"4856102\",\"nickname\":\"Tien\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/2/4856102_4201823336s.jpg\"},{\"mixi_id\":\"2892405\",\"nickname\":\"ひろせ31\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/24/5/2892405_1293080365s.jpg\"},{\"mixi_id\":\"2273655\",\"nickname\":\"elastico\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/36/55/2273655_3990015965s.jpg\"},{\"mixi_id\":\"1576010\",\"nickname\":\"のむ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/60/10/1576010_1283611056s.jpg\"},{\"mixi_id\":\"1432568\",\"nickname\":\"よしてつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/68/1432568_3210904553s.jpg\"},{\"mixi_id\":\"1012572\",\"nickname\":\"きびたん＠SHANPY♪\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/72/1012572_4009106640s.jpg\"},{\"mixi_id\":\"821443\",\"nickname\":\"う−.*･゜\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/14/43/821443_3326428246s.jpg\"},{\"mixi_id\":\"727131\",\"nickname\":\"K @ M i  hentaisan\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/31/727131_3532985331s.jpg\"},{\"mixi_id\":\"707790\",\"nickname\":\"ぴょこぽん\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/77/90/707790_3967859727s.jpg\"},{\"mixi_id\":\"527171\",\"nickname\":\"tomoya\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/71/527171_3357683263s.jpg\"},{\"mixi_id\":\"376185\",\"nickname\":\"加藤＠ネオ虎\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/85/376185_3235521013s.jpg\"},{\"mixi_id\":\"272391\",\"nickname\":\"西小倉パンデイロ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/23/91/272391_2331921916s.jpg\"},{\"mixi_id\":\"238403\",\"nickname\":\"おがつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/84/3/238403_3526442746s.jpg\"},{\"mixi_id\":\"193945\",\"nickname\":\"ophelia\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/39/45/193945_1861259059s.jpg\"},{\"mixi_id\":\"165158\",\"nickname\":\"nog\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/51/58/165158_3253036858s.jpg\"},{\"mixi_id\":\"145381\",\"nickname\":\"keik\",\"thumbnail_url\":\"http://img.mixi.jp/img/basic/common/noimage_member76.gif\"},{\"mixi_id\":\"124734\",\"nickname\":\"あふろ(onk)\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/47/34/124734_1799261299s.jpg\"},{\"mixi_id\":\"90352\",\"nickname\":\"nom\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/3/52/90352_1017462255s.jpg\"},{\"mixi_id\":\"68006\",\"nickname\":\"気まぐれタヒチ風うみ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/80/6/68006_1663796429s.jpg\"},{\"mixi_id\":\"65897\",\"nickname\":\"Hd3\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/58/97/65897_618022769s.jpg\"},{\"mixi_id\":\"46490\",\"nickname\":\"いのへい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/64/90/46490_2819739811s.jpg\"},{\"mixi_id\":\"23783\",\"nickname\":\"Magic☆\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/37/83/23783_3493635382s.jpg\"},{\"mixi_id\":\"271\",\"nickname\":\"隊長\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/71/271_1616171260s.jpg\"},{\"mixi_id\":\"267\",\"nickname\":\"antimo\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/67/267_920079190s.jpg\"},{\"mixi_id\":\"128\",\"nickname\":\"クラビノ・イーター\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/28/128_170347820s.jpg\"},{\"mixi_id\":\"118\",\"nickname\":\"saeco\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/18/118_2295403409s.jpg\"},{\"mixi_id\":\"112\",\"nickname\":\"yuki naito\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/12/112_3453845262s.jpg\"}]", "action"=>"register", "controller"=>"gadget", "owner"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}"}
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:16') LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:16') LIMIT 1[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '12874032') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:16') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:16', '12874032', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:16')[0m
+  [4;35;1mSQL (15.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.6ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/40/32/12874032_478443709s.jpg', `nickname` = 'しゅうたろう', `updated_at` = '2009-08-27 05:53:16' WHERE `id` = 2[0m
+  [4;36;1mSQL (54.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.9ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `friends` ON `users`.id = `friends`.friend_id WHERE ((`friends`.user_id = 1)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:16') ORDER BY users.mixi_id asc[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mFriend Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `friends`[0m
+  [4;36;1mFriend Create (0.6ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:16', 1, 2, '2009-08-27 05:53:16')[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '6992542') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:16') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.7ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:16', '6992542', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:16')[0m
+  [4;35;1mSQL (3.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.6ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/25/42/6992542_3079675742s.jpg', `nickname` = 'NOV', `updated_at` = '2009-08-27 05:53:16' WHERE `id` = 3[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.5ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:16', 1, 3, '2009-08-27 05:53:16')[0m
+  [4;35;1mSQL (3.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '4856102') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:16') LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (1.0ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:16', '4856102', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:16')[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.6ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/61/2/4856102_4201823336s.jpg', `nickname` = 'Tien', `updated_at` = '2009-08-27 05:53:16' WHERE `id` = 4[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.4ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:16', 1, 4, '2009-08-27 05:53:16')[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '2892405') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:16') LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:16', '2892405', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:16')[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.7ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/24/5/2892405_1293080365s.jpg', `nickname` = 'ひろせ31', `updated_at` = '2009-08-27 05:53:16' WHERE `id` = 5[0m
+  [4;36;1mSQL (3.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.6ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:16', 1, 5, '2009-08-27 05:53:16')[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '2273655') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:16') LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (1.0ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:16', '2273655', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:16')[0m
+  [4;35;1mSQL (3.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (1.0ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/36/55/2273655_3990015965s.jpg', `nickname` = 'elastico', `updated_at` = '2009-08-27 05:53:16' WHERE `id` = 6[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.5ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:16', 1, 6, '2009-08-27 05:53:16')[0m
+  [4;35;1mSQL (35.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (18.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1576010') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '1576010', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/60/10/1576010_1283611056s.jpg', `nickname` = 'のむ', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 7[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.4ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 7, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (3.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1432568') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '1432568', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (8.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/25/68/1432568_3210904553s.jpg', `nickname` = 'よしてつ', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 8[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.4ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 8, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1012572') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '1012572', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/25/72/1012572_4009106640s.jpg', `nickname` = 'きびたん＠SHANPY♪', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 9[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.7ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 9, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '821443') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '821443', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/14/43/821443_3326428246s.jpg', `nickname` = 'う−.*･゜', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 10[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.4ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 10, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '727131') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '727131', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/71/31/727131_3532985331s.jpg', `nickname` = 'K @ M i hentaisan', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 11[0m
+  [4;36;1mSQL (19.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.5ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 11, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '707790') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '707790', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/77/90/707790_3967859727s.jpg', `nickname` = 'ぴょこぽん', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 12[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.4ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 12, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '527171') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '527171', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (5.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/71/71/527171_3357683263s.jpg', `nickname` = 'tomoya', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 13[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.6ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 13, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '376185') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '376185', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/61/85/376185_3235521013s.jpg', `nickname` = '加藤＠ネオ虎', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 14[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.6ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 14, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '272391') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '272391', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.6ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/23/91/272391_2331921916s.jpg', `nickname` = '西小倉パンデイロ', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 15[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.5ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 15, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '238403') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '238403', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.6ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/84/3/238403_3526442746s.jpg', `nickname` = 'おがつ', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 16[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.7ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 16, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '193945') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (2.1ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '193945', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/39/45/193945_1861259059s.jpg', `nickname` = 'ophelia', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 17[0m
+  [4;36;1mSQL (3.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.5ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 17, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '165158') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '165158', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (5.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (1.3ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/51/58/165158_3253036858s.jpg', `nickname` = 'nog', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 18[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.6ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 18, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (4.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '145381') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '145381', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.6ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://img.mixi.jp/img/basic/common/noimage_member76.gif', `nickname` = 'keik', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 19[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.5ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 19, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '124734') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '124734', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/47/34/124734_1799261299s.jpg', `nickname` = 'あふろ(onk)', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 20[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.5ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 20, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '90352') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.9ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '90352', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.7ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/3/52/90352_1017462255s.jpg', `nickname` = 'nom', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 21[0m
+  [4;36;1mSQL (4.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.4ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 21, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (42.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '68006') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '68006', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.6ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/80/6/68006_1663796429s.jpg', `nickname` = '気まぐれタヒチ風うみ', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 22[0m
+  [4;36;1mSQL (4.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.6ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 22, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '65897') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '65897', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.8ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/58/97/65897_618022769s.jpg', `nickname` = 'Hd3', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 23[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.6ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 23, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '46490') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '46490', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.7ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/64/90/46490_2819739811s.jpg', `nickname` = 'いのへい', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 24[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.7ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 24, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '23783') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '23783', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.6ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/37/83/23783_3493635382s.jpg', `nickname` = 'Magic☆', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 25[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.4ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 25, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '271') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '271', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.6ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/2/71/271_1616171260s.jpg', `nickname` = '隊長', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 26[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.4ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 26, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '267') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '267', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.8ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/2/67/267_920079190s.jpg', `nickname` = 'antimo', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 27[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.5ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 27, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '128') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '128', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (1.5ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/1/28/128_170347820s.jpg', `nickname` = 'クラビノ・イーター', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 28[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.4ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 28, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '118') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '118', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/1/18/118_2295403409s.jpg', `nickname` = 'saeco', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 29[0m
+  [4;36;1mSQL (3.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.4ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 29, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '112') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO `users` (`updated_at`, `mixi_id`, `joined_at`, `nickname`, `deleted_at`, `logged_at`, `profile_url`, `thumbnail_url`, `created_at`) VALUES('2009-08-27 05:53:17', '112', NULL, NULL, NULL, NULL, NULL, NULL, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.8ms)[0m   [0mUPDATE `users` SET `thumbnail_url` = 'http://profile.img.mixi.jp/photo/member/1/12/112_3453845262s.jpg', `nickname` = 'yuki naito', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 30[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFriend Create (0.4ms)[0m   [0;1mINSERT INTO `friends` (`updated_at`, `user_id`, `friend_id`, `created_at`) VALUES('2009-08-27 05:53:17', 1, 30, '2009-08-27 05:53:17')[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mFriend Load (0.8ms)[0m   [0;1mSELECT * FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.6ms)[0m   [0;1mUPDATE `users` SET `joined_at` = '2009-08-27 05:53:16', `logged_at` = '2009-08-27 05:53:16', `updated_at` = '2009-08-27 05:53:17' WHERE `id` = 1[0m
+  [4;35;1mSQL (37.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') [0m
+  [4;35;1mFriend Load (0.6ms)[0m   [0mSELECT `friends`.* FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` IN (22,11,6,23,12,7,24,13,8,25,14,9,26,15,27,16,28,17,30,29,18,2,20,19,3,21,10,4,5)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT `friends`.* FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` IN (22,11,6,23,12,7,24,13,8,25,14,9,26,15,27,16,28,17,30,29,18,2,20,19,3,21,10,4,5)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:53:17') [0m
+Redirected to http://base.test.cyworks.jp/gadget/top?_mixiapp_session=33dd6bc51b066c02c006302c952e54e2&viewer=1
+Completed in 1233ms (DB: 571) | 302 Found [http://base.test.cyworks.jp/gadget/register]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#top (for 192.168.11.100 at 2009-08-27 14:53:17) [GET]
+  Parameters: {"viewer"=>"1", "_mixiapp_session"=>"33dd6bc51b066c02c006302c952e54e2", "action"=>"top", "controller"=>"gadget"}
+Rendering template within layouts/application
+Rendering gadget/top
+Completed in 159ms (View: 18, DB: 1) | 200 OK [http://base.test.cyworks.jp/gadget/top?_mixiapp_session=33dd6bc51b066c02c006302c952e54e2&viewer=1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#index (for 192.168.11.100 at 2009-08-27 14:53:18) [GET]
+  Parameters: {"_mixiapp_session"=>"33dd6bc51b066c02c006302c952e54e2", "action"=>"index", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/index
+Completed in 51ms (View: 24, DB: 1) | 200 OK [http://base.test.cyworks.jp/test?_mixiapp_session=33dd6bc51b066c02c006302c952e54e2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#profile (for 192.168.11.100 at 2009-08-27 14:53:20) [GET]
+  Parameters: {"_mixiapp_session"=>"33dd6bc51b066c02c006302c952e54e2", "action"=>"profile", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/profile
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 52ms (View: 20, DB: 3) | 200 OK [http://base.test.cyworks.jp/test/profile?_mixiapp_session=33dd6bc51b066c02c006302c952e54e2]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 192.168.11.100 at 2009-08-27 14:54:04) [GET]
+  Parameters: {"_mixiapp_session"=>"33dd6bc51b066c02c006302c952e54e2"}
+
+ActionController::RoutingError (No route matches "/game/top" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#register (for 192.168.11.100 at 2009-08-27 14:59:45) [POST]
+  Parameters: {"viewer"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}", "friends"=>"[{\"mixi_id\":\"23612632\",\"thumbnail_url\":null},{\"mixi_id\":\"12874032\",\"nickname\":\"しゅうたろう\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/40/32/12874032_478443709s.jpg\"},{\"mixi_id\":\"6992542\",\"nickname\":\"NOV\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/42/6992542_3079675742s.jpg\"},{\"mixi_id\":\"4856102\",\"nickname\":\"Tien\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/2/4856102_4201823336s.jpg\"},{\"mixi_id\":\"2892405\",\"nickname\":\"ひろせ31\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/24/5/2892405_1293080365s.jpg\"},{\"mixi_id\":\"2273655\",\"nickname\":\"elastico\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/36/55/2273655_3990015965s.jpg\"},{\"mixi_id\":\"1576010\",\"nickname\":\"のむ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/60/10/1576010_1283611056s.jpg\"},{\"mixi_id\":\"1432568\",\"nickname\":\"よしてつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/68/1432568_3210904553s.jpg\"},{\"mixi_id\":\"1012572\",\"nickname\":\"きびたん＠SHANPY♪\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/72/1012572_4009106640s.jpg\"},{\"mixi_id\":\"821443\",\"nickname\":\"う−.*･゜\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/14/43/821443_3326428246s.jpg\"},{\"mixi_id\":\"727131\",\"nickname\":\"K @ M i  hentaisan\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/31/727131_3532985331s.jpg\"},{\"mixi_id\":\"707790\",\"nickname\":\"ぴょこぽん\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/77/90/707790_3967859727s.jpg\"},{\"mixi_id\":\"527171\",\"nickname\":\"tomoya\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/71/527171_3357683263s.jpg\"},{\"mixi_id\":\"376185\",\"nickname\":\"加藤＠ネオ虎\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/85/376185_3235521013s.jpg\"},{\"mixi_id\":\"272391\",\"nickname\":\"西小倉パンデイロ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/23/91/272391_2331921916s.jpg\"},{\"mixi_id\":\"238403\",\"nickname\":\"おがつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/84/3/238403_3526442746s.jpg\"},{\"mixi_id\":\"193945\",\"nickname\":\"ophelia\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/39/45/193945_1861259059s.jpg\"},{\"mixi_id\":\"165158\",\"nickname\":\"nog\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/51/58/165158_3253036858s.jpg\"},{\"mixi_id\":\"145381\",\"nickname\":\"keik\",\"thumbnail_url\":\"http://img.mixi.jp/img/basic/common/noimage_member76.gif\"},{\"mixi_id\":\"124734\",\"nickname\":\"あふろ(onk)\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/47/34/124734_1799261299s.jpg\"},{\"mixi_id\":\"90352\",\"nickname\":\"nom\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/3/52/90352_1017462255s.jpg\"},{\"mixi_id\":\"68006\",\"nickname\":\"気まぐれタヒチ風うみ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/80/6/68006_1663796429s.jpg\"},{\"mixi_id\":\"65897\",\"nickname\":\"Hd3\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/58/97/65897_618022769s.jpg\"},{\"mixi_id\":\"46490\",\"nickname\":\"いのへい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/64/90/46490_2819739811s.jpg\"},{\"mixi_id\":\"23783\",\"nickname\":\"Magic☆\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/37/83/23783_3493635382s.jpg\"},{\"mixi_id\":\"271\",\"nickname\":\"隊長\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/71/271_1616171260s.jpg\"},{\"mixi_id\":\"267\",\"nickname\":\"antimo\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/67/267_920079190s.jpg\"},{\"mixi_id\":\"128\",\"nickname\":\"クラビノ・イーター\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/28/128_170347820s.jpg\"},{\"mixi_id\":\"118\",\"nickname\":\"saeco\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/18/118_2295403409s.jpg\"},{\"mixi_id\":\"112\",\"nickname\":\"yuki naito\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/12/112_3453845262s.jpg\"}]", "action"=>"register", "controller"=>"gadget", "owner"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}"}
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '12874032') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (2.2ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `friends` ON `users`.id = `friends`.friend_id WHERE ((`friends`.user_id = 1)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') ORDER BY users.mixi_id asc[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '6992542') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '4856102') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '2892405') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '2273655') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1576010') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (1.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1432568') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1012572') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '821443') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '727131') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '707790') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '527171') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '376185') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '272391') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (1.8ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '238403') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '193945') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '165158') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '145381') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '124734') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '90352') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '68006') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '65897') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '46490') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '23783') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '271') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '267') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.8ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '128') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '118') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '112') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mFriend Load (0.2ms)[0m   [0;1mSELECT * FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;35;1mFriend Columns (7.0ms)[0m   [0mSHOW FIELDS FROM `friends`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (2.5ms)[0m   [0mUPDATE `users` SET `logged_at` = '2009-08-27 05:59:45', `updated_at` = '2009-08-27 05:59:45' WHERE `id` = 1[0m
+  [4;36;1mSQL (15.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') [0m
+  [4;36;1mFriend Load (0.3ms)[0m   [0;1mSELECT `friends`.* FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` IN (22,11,6,23,12,7,24,13,8,25,14,9,26,15,27,16,28,17,30,29,18,2,20,19,3,21,10,4,5)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT `friends`.* FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` IN (22,11,6,23,12,7,24,13,8,25,14,9,26,15,27,16,28,17,30,29,18,2,20,19,3,21,10,4,5)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 05:59:45') [0m
+Redirected to http://base.test.cyworks.jp/gadget/top?_mixiapp_session=14eceb0ba0db3e9cefa4d6019bf6e0c2&viewer=1
+Completed in 316ms (DB: 88) | 302 Found [http://base.test.cyworks.jp/gadget/register]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#top (for 192.168.11.100 at 2009-08-27 14:59:45) [GET]
+  Parameters: {"viewer"=>"1", "_mixiapp_session"=>"14eceb0ba0db3e9cefa4d6019bf6e0c2", "action"=>"top", "controller"=>"gadget"}
+Rendering template within layouts/application
+Rendering gadget/top
+Completed in 39ms (View: 12, DB: 1) | 200 OK [http://base.test.cyworks.jp/gadget/top?_mixiapp_session=14eceb0ba0db3e9cefa4d6019bf6e0c2&viewer=1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#index (for 192.168.11.100 at 2009-08-27 14:59:46) [GET]
+  Parameters: {"_mixiapp_session"=>"14eceb0ba0db3e9cefa4d6019bf6e0c2", "action"=>"index", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/index
+Completed in 45ms (View: 12, DB: 1) | 200 OK [http://base.test.cyworks.jp/test?_mixiapp_session=14eceb0ba0db3e9cefa4d6019bf6e0c2]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#friends (for 192.168.11.100 at 2009-08-27 14:59:47) [GET]
+  Parameters: {"_mixiapp_session"=>"14eceb0ba0db3e9cefa4d6019bf6e0c2", "action"=>"friends", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/friends
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 54ms (View: 19, DB: 3) | 200 OK [http://base.test.cyworks.jp/test/friends?_mixiapp_session=14eceb0ba0db3e9cefa4d6019bf6e0c2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#top (for 192.168.11.100 at 2009-08-27 14:59:52) [GET]
+  Parameters: {"_mixiapp_session"=>"14eceb0ba0db3e9cefa4d6019bf6e0c2", "action"=>"top", "controller"=>"test"}
+
+ActionController::UnknownAction (No action responded to top. Actions: activity, friends, profile, script, and script2):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#register (for 192.168.11.100 at 2009-08-27 15:00:45) [POST]
+  Parameters: {"viewer"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}", "friends"=>"[{\"mixi_id\":\"23612632\",\"thumbnail_url\":null},{\"mixi_id\":\"12874032\",\"nickname\":\"しゅうたろう\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/40/32/12874032_478443709s.jpg\"},{\"mixi_id\":\"6992542\",\"nickname\":\"NOV\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/42/6992542_3079675742s.jpg\"},{\"mixi_id\":\"4856102\",\"nickname\":\"Tien\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/2/4856102_4201823336s.jpg\"},{\"mixi_id\":\"2892405\",\"nickname\":\"ひろせ31\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/24/5/2892405_1293080365s.jpg\"},{\"mixi_id\":\"2273655\",\"nickname\":\"elastico\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/36/55/2273655_3990015965s.jpg\"},{\"mixi_id\":\"1576010\",\"nickname\":\"のむ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/60/10/1576010_1283611056s.jpg\"},{\"mixi_id\":\"1432568\",\"nickname\":\"よしてつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/68/1432568_3210904553s.jpg\"},{\"mixi_id\":\"1012572\",\"nickname\":\"きびたん＠SHANPY♪\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/72/1012572_4009106640s.jpg\"},{\"mixi_id\":\"821443\",\"nickname\":\"う−.*･゜\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/14/43/821443_3326428246s.jpg\"},{\"mixi_id\":\"727131\",\"nickname\":\"K @ M i  hentaisan\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/31/727131_3532985331s.jpg\"},{\"mixi_id\":\"707790\",\"nickname\":\"ぴょこぽん\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/77/90/707790_3967859727s.jpg\"},{\"mixi_id\":\"527171\",\"nickname\":\"tomoya\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/71/527171_3357683263s.jpg\"},{\"mixi_id\":\"376185\",\"nickname\":\"加藤＠ネオ虎\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/85/376185_3235521013s.jpg\"},{\"mixi_id\":\"272391\",\"nickname\":\"西小倉パンデイロ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/23/91/272391_2331921916s.jpg\"},{\"mixi_id\":\"238403\",\"nickname\":\"おがつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/84/3/238403_3526442746s.jpg\"},{\"mixi_id\":\"193945\",\"nickname\":\"ophelia\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/39/45/193945_1861259059s.jpg\"},{\"mixi_id\":\"165158\",\"nickname\":\"nog\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/51/58/165158_3253036858s.jpg\"},{\"mixi_id\":\"145381\",\"nickname\":\"keik\",\"thumbnail_url\":\"http://img.mixi.jp/img/basic/common/noimage_member76.gif\"},{\"mixi_id\":\"124734\",\"nickname\":\"あふろ(onk)\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/47/34/124734_1799261299s.jpg\"},{\"mixi_id\":\"90352\",\"nickname\":\"nom\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/3/52/90352_1017462255s.jpg\"},{\"mixi_id\":\"68006\",\"nickname\":\"気まぐれタヒチ風うみ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/80/6/68006_1663796429s.jpg\"},{\"mixi_id\":\"65897\",\"nickname\":\"Hd3\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/58/97/65897_618022769s.jpg\"},{\"mixi_id\":\"46490\",\"nickname\":\"いのへい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/64/90/46490_2819739811s.jpg\"},{\"mixi_id\":\"23783\",\"nickname\":\"Magic☆\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/37/83/23783_3493635382s.jpg\"},{\"mixi_id\":\"271\",\"nickname\":\"隊長\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/71/271_1616171260s.jpg\"},{\"mixi_id\":\"267\",\"nickname\":\"antimo\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/67/267_920079190s.jpg\"},{\"mixi_id\":\"128\",\"nickname\":\"クラビノ・イーター\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/28/128_170347820s.jpg\"},{\"mixi_id\":\"118\",\"nickname\":\"saeco\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/18/118_2295403409s.jpg\"},{\"mixi_id\":\"112\",\"nickname\":\"yuki naito\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/12/112_3453845262s.jpg\"}]", "action"=>"register", "controller"=>"gadget", "owner"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '12874032') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `friends` ON `users`.id = `friends`.friend_id WHERE ((`friends`.user_id = 1)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') ORDER BY users.mixi_id asc[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '6992542') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '4856102') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '2892405') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '2273655') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1576010') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1432568') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1012572') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '821443') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '727131') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '707790') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '527171') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.9ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '376185') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '272391') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '238403') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '193945') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '165158') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '145381') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '124734') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '90352') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '68006') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.9ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '65897') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '46490') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '23783') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (2.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '271') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '267') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '128') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '118') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '112') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:45') LIMIT 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mFriend Load (0.2ms)[0m   [0mSELECT * FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;36;1mFriend Columns (3.8ms)[0m   [0;1mSHOW FIELDS FROM `friends`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.8ms)[0m   [0;1mUPDATE `users` SET `logged_at` = '2009-08-27 06:00:45', `updated_at` = '2009-08-27 06:00:45' WHERE `id` = 1[0m
+  [4;35;1mSQL (42.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:46') [0m
+  [4;35;1mFriend Load (0.3ms)[0m   [0mSELECT `friends`.* FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;36;1mUser Load (1.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` IN (22,11,6,23,12,7,24,13,8,25,14,9,26,15,27,16,28,17,30,29,18,2,20,19,3,21,10,4,5)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:46') [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:46') [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT `friends`.* FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` IN (22,11,6,23,12,7,24,13,8,25,14,9,26,15,27,16,28,17,30,29,18,2,20,19,3,21,10,4,5)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:00:46') [0m
+Redirected to http://base.test.cyworks.jp/gadget/top?_mixiapp_session=b53ece70d416c5cf6a502740c0e4a30c&viewer=1
+Completed in 381ms (DB: 91) | 302 Found [http://base.test.cyworks.jp/gadget/register]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#top (for 192.168.11.100 at 2009-08-27 15:00:46) [GET]
+  Parameters: {"viewer"=>"1", "_mixiapp_session"=>"b53ece70d416c5cf6a502740c0e4a30c", "action"=>"top", "controller"=>"gadget"}
+Rendering template within layouts/application
+Rendering gadget/top
+Completed in 36ms (View: 8, DB: 1) | 200 OK [http://base.test.cyworks.jp/gadget/top?_mixiapp_session=b53ece70d416c5cf6a502740c0e4a30c&viewer=1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#index (for 192.168.11.100 at 2009-08-27 15:00:46) [GET]
+  Parameters: {"_mixiapp_session"=>"b53ece70d416c5cf6a502740c0e4a30c", "action"=>"index", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/index
+Completed in 38ms (View: 8, DB: 1) | 200 OK [http://base.test.cyworks.jp/test?_mixiapp_session=b53ece70d416c5cf6a502740c0e4a30c]
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#profile (for 192.168.11.100 at 2009-08-27 15:00:48) [GET]
+  Parameters: {"_mixiapp_session"=>"b53ece70d416c5cf6a502740c0e4a30c", "action"=>"profile", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/profile
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 60ms (View: 17, DB: 5) | 200 OK [http://base.test.cyworks.jp/test/profile?_mixiapp_session=b53ece70d416c5cf6a502740c0e4a30c]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#index (for 192.168.11.100 at 2009-08-27 15:00:49) [GET]
+  Parameters: {"_mixiapp_session"=>"b53ece70d416c5cf6a502740c0e4a30c", "action"=>"index", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/index
+Completed in 42ms (View: 10, DB: 1) | 200 OK [http://base.test.cyworks.jp/test?_mixiapp_session=b53ece70d416c5cf6a502740c0e4a30c]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#friends (for 192.168.11.100 at 2009-08-27 15:00:50) [GET]
+  Parameters: {"_mixiapp_session"=>"b53ece70d416c5cf6a502740c0e4a30c", "action"=>"friends", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/friends
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 67ms (View: 24, DB: 3) | 200 OK [http://base.test.cyworks.jp/test/friends?_mixiapp_session=b53ece70d416c5cf6a502740c0e4a30c]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#register (for 192.168.11.100 at 2009-08-27 15:01:20) [POST]
+  Parameters: {"viewer"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}", "friends"=>"[{\"mixi_id\":\"23612632\",\"thumbnail_url\":null},{\"mixi_id\":\"12874032\",\"nickname\":\"しゅうたろう\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/40/32/12874032_478443709s.jpg\"},{\"mixi_id\":\"6992542\",\"nickname\":\"NOV\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/42/6992542_3079675742s.jpg\"},{\"mixi_id\":\"4856102\",\"nickname\":\"Tien\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/2/4856102_4201823336s.jpg\"},{\"mixi_id\":\"2892405\",\"nickname\":\"ひろせ31\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/24/5/2892405_1293080365s.jpg\"},{\"mixi_id\":\"2273655\",\"nickname\":\"elastico\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/36/55/2273655_3990015965s.jpg\"},{\"mixi_id\":\"1576010\",\"nickname\":\"のむ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/60/10/1576010_1283611056s.jpg\"},{\"mixi_id\":\"1432568\",\"nickname\":\"よしてつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/68/1432568_3210904553s.jpg\"},{\"mixi_id\":\"1012572\",\"nickname\":\"きびたん＠SHANPY♪\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/72/1012572_4009106640s.jpg\"},{\"mixi_id\":\"821443\",\"nickname\":\"う−.*･゜\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/14/43/821443_3326428246s.jpg\"},{\"mixi_id\":\"727131\",\"nickname\":\"K @ M i  hentaisan\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/31/727131_3532985331s.jpg\"},{\"mixi_id\":\"707790\",\"nickname\":\"ぴょこぽん\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/77/90/707790_3967859727s.jpg\"},{\"mixi_id\":\"527171\",\"nickname\":\"tomoya\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/71/527171_3357683263s.jpg\"},{\"mixi_id\":\"376185\",\"nickname\":\"加藤＠ネオ虎\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/85/376185_3235521013s.jpg\"},{\"mixi_id\":\"272391\",\"nickname\":\"西小倉パンデイロ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/23/91/272391_2331921916s.jpg\"},{\"mixi_id\":\"238403\",\"nickname\":\"おがつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/84/3/238403_3526442746s.jpg\"},{\"mixi_id\":\"193945\",\"nickname\":\"ophelia\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/39/45/193945_1861259059s.jpg\"},{\"mixi_id\":\"165158\",\"nickname\":\"nog\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/51/58/165158_3253036858s.jpg\"},{\"mixi_id\":\"145381\",\"nickname\":\"keik\",\"thumbnail_url\":\"http://img.mixi.jp/img/basic/common/noimage_member76.gif\"},{\"mixi_id\":\"124734\",\"nickname\":\"あふろ(onk)\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/47/34/124734_1799261299s.jpg\"},{\"mixi_id\":\"90352\",\"nickname\":\"nom\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/3/52/90352_1017462255s.jpg\"},{\"mixi_id\":\"68006\",\"nickname\":\"気まぐれタヒチ風うみ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/80/6/68006_1663796429s.jpg\"},{\"mixi_id\":\"65897\",\"nickname\":\"Hd3\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/58/97/65897_618022769s.jpg\"},{\"mixi_id\":\"46490\",\"nickname\":\"いのへい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/64/90/46490_2819739811s.jpg\"},{\"mixi_id\":\"23783\",\"nickname\":\"Magic☆\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/37/83/23783_3493635382s.jpg\"},{\"mixi_id\":\"271\",\"nickname\":\"隊長\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/71/271_1616171260s.jpg\"},{\"mixi_id\":\"267\",\"nickname\":\"antimo\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/67/267_920079190s.jpg\"},{\"mixi_id\":\"128\",\"nickname\":\"クラビノ・イーター\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/28/128_170347820s.jpg\"},{\"mixi_id\":\"118\",\"nickname\":\"saeco\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/18/118_2295403409s.jpg\"},{\"mixi_id\":\"112\",\"nickname\":\"yuki naito\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/12/112_3453845262s.jpg\"}]", "action"=>"register", "controller"=>"gadget", "owner"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '12874032') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.7ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `friends` ON `users`.id = `friends`.friend_id WHERE ((`friends`.user_id = 1)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') ORDER BY users.mixi_id asc[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '6992542') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '4856102') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '2892405') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '2273655') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1576010') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1432568') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (2.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1012572') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '821443') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '727131') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '707790') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '527171') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '376185') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '272391') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '238403') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '193945') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '165158') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '145381') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '124734') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '90352') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '68006') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '65897') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '46490') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '23783') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '271') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '267') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '128') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '118') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '112') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:20') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mFriend Load (0.2ms)[0m   [0mSELECT * FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;36;1mFriend Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `friends`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE `users` SET `logged_at` = '2009-08-27 06:01:20', `updated_at` = '2009-08-27 06:01:21' WHERE `id` = 1[0m
+  [4;35;1mSQL (45.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:21') [0m
+  [4;35;1mFriend Load (0.3ms)[0m   [0mSELECT `friends`.* FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;36;1mUser Load (0.9ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` IN (22,11,6,23,12,7,24,13,8,25,14,9,26,15,27,16,28,17,30,29,18,2,20,19,3,21,10,4,5)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:21') [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:21') [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT `friends`.* FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` IN (22,11,6,23,12,7,24,13,8,25,14,9,26,15,27,16,28,17,30,29,18,2,20,19,3,21,10,4,5)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:01:21') [0m
+Redirected to http://base.test.cyworks.jp/gadget/top?_mixiapp_session=af3f9a2fbdd2b2e5018f8af96b256442&viewer=1
+Completed in 323ms (DB: 94) | 302 Found [http://base.test.cyworks.jp/gadget/register]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#top (for 192.168.11.100 at 2009-08-27 15:01:21) [GET]
+  Parameters: {"viewer"=>"1", "_mixiapp_session"=>"af3f9a2fbdd2b2e5018f8af96b256442", "action"=>"top", "controller"=>"gadget"}
+Rendering template within layouts/application
+Rendering gadget/top
+Completed in 37ms (View: 7, DB: 1) | 200 OK [http://base.test.cyworks.jp/gadget/top?_mixiapp_session=af3f9a2fbdd2b2e5018f8af96b256442&viewer=1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#index (for 192.168.11.100 at 2009-08-27 15:01:21) [GET]
+  Parameters: {"_mixiapp_session"=>"af3f9a2fbdd2b2e5018f8af96b256442", "action"=>"index", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/index
+Completed in 39ms (View: 8, DB: 1) | 200 OK [http://base.test.cyworks.jp/test?_mixiapp_session=af3f9a2fbdd2b2e5018f8af96b256442]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#profile (for 192.168.11.100 at 2009-08-27 15:01:27) [GET]
+  Parameters: {"_mixiapp_session"=>"af3f9a2fbdd2b2e5018f8af96b256442", "action"=>"profile", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/profile
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 55ms (View: 21, DB: 3) | 200 OK [http://base.test.cyworks.jp/test/profile?_mixiapp_session=af3f9a2fbdd2b2e5018f8af96b256442]
+  [4;35;1mSQL (0.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#index (for 192.168.11.100 at 2009-08-27 15:01:29) [GET]
+  Parameters: {"_mixiapp_session"=>"af3f9a2fbdd2b2e5018f8af96b256442", "action"=>"index", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/index
+Completed in 46ms (View: 8, DB: 1) | 200 OK [http://base.test.cyworks.jp/test?_mixiapp_session=af3f9a2fbdd2b2e5018f8af96b256442]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#friends (for 192.168.11.100 at 2009-08-27 15:01:30) [GET]
+  Parameters: {"_mixiapp_session"=>"af3f9a2fbdd2b2e5018f8af96b256442", "action"=>"friends", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/friends
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 59ms (View: 24, DB: 5) | 200 OK [http://base.test.cyworks.jp/test/friends?_mixiapp_session=af3f9a2fbdd2b2e5018f8af96b256442]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#index (for 192.168.11.100 at 2009-08-27 15:01:31) [GET]
+  Parameters: {"_mixiapp_session"=>"af3f9a2fbdd2b2e5018f8af96b256442", "action"=>"index", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/index
+Completed in 39ms (View: 11, DB: 1) | 200 OK [http://base.test.cyworks.jp/test?_mixiapp_session=af3f9a2fbdd2b2e5018f8af96b256442]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#script (for 192.168.11.100 at 2009-08-27 15:01:31) [GET]
+  Parameters: {"_mixiapp_session"=>"af3f9a2fbdd2b2e5018f8af96b256442", "action"=>"script", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/script
+Completed in 45ms (View: 14, DB: 2) | 200 OK [http://base.test.cyworks.jp/test/script?_mixiapp_session=af3f9a2fbdd2b2e5018f8af96b256442]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#script2 to js (for 192.168.11.100 at 2009-08-27 15:01:33) [GET]
+  Parameters: {"format"=>"js", "_mixiapp_session"=>"af3f9a2fbdd2b2e5018f8af96b256442", "action"=>"script2", "controller"=>"test", "str"=>"文字列1"}
+Rendering test/script2
+Completed in 73ms (View: 11, DB: 4) | 200 OK [http://base.test.cyworks.jp/test/script2.js?str=%E6%96%87%E5%AD%97%E5%88%971&_mixiapp_session=af3f9a2fbdd2b2e5018f8af96b256442]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#script2 (for 192.168.11.100 at 2009-08-27 15:01:35) [GET]
+  Parameters: {"_mixiapp_session"=>"af3f9a2fbdd2b2e5018f8af96b256442", "action"=>"script2", "controller"=>"test", "str"=>"文字列2"}
+Rendering template within layouts/application
+Rendering test/script2
+Completed in 152ms (View: 17, DB: 1) | 200 OK [http://base.test.cyworks.jp/test/script2?str=%E6%96%87%E5%AD%97%E5%88%972&_mixiapp_session=af3f9a2fbdd2b2e5018f8af96b256442]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#register (for 192.168.11.100 at 2009-08-27 15:02:34) [POST]
+  Parameters: {"viewer"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}", "friends"=>"[{\"mixi_id\":\"23612632\",\"thumbnail_url\":null},{\"mixi_id\":\"12874032\",\"nickname\":\"しゅうたろう\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/40/32/12874032_478443709s.jpg\"},{\"mixi_id\":\"6992542\",\"nickname\":\"NOV\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/42/6992542_3079675742s.jpg\"},{\"mixi_id\":\"4856102\",\"nickname\":\"Tien\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/2/4856102_4201823336s.jpg\"},{\"mixi_id\":\"2892405\",\"nickname\":\"ひろせ31\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/24/5/2892405_1293080365s.jpg\"},{\"mixi_id\":\"2273655\",\"nickname\":\"elastico\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/36/55/2273655_3990015965s.jpg\"},{\"mixi_id\":\"1576010\",\"nickname\":\"のむ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/60/10/1576010_1283611056s.jpg\"},{\"mixi_id\":\"1432568\",\"nickname\":\"よしてつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/68/1432568_3210904553s.jpg\"},{\"mixi_id\":\"1012572\",\"nickname\":\"きびたん＠SHANPY♪\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/72/1012572_4009106640s.jpg\"},{\"mixi_id\":\"821443\",\"nickname\":\"う−.*･゜\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/14/43/821443_3326428246s.jpg\"},{\"mixi_id\":\"727131\",\"nickname\":\"K @ M i  hentaisan\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/31/727131_3532985331s.jpg\"},{\"mixi_id\":\"707790\",\"nickname\":\"ぴょこぽん\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/77/90/707790_3967859727s.jpg\"},{\"mixi_id\":\"527171\",\"nickname\":\"tomoya\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/71/527171_3357683263s.jpg\"},{\"mixi_id\":\"376185\",\"nickname\":\"加藤＠ネオ虎\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/85/376185_3235521013s.jpg\"},{\"mixi_id\":\"272391\",\"nickname\":\"西小倉パンデイロ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/23/91/272391_2331921916s.jpg\"},{\"mixi_id\":\"238403\",\"nickname\":\"おがつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/84/3/238403_3526442746s.jpg\"},{\"mixi_id\":\"193945\",\"nickname\":\"ophelia\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/39/45/193945_1861259059s.jpg\"},{\"mixi_id\":\"165158\",\"nickname\":\"nog\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/51/58/165158_3253036858s.jpg\"},{\"mixi_id\":\"145381\",\"nickname\":\"keik\",\"thumbnail_url\":\"http://img.mixi.jp/img/basic/common/noimage_member76.gif\"},{\"mixi_id\":\"124734\",\"nickname\":\"あふろ(onk)\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/47/34/124734_1799261299s.jpg\"},{\"mixi_id\":\"90352\",\"nickname\":\"nom\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/3/52/90352_1017462255s.jpg\"},{\"mixi_id\":\"68006\",\"nickname\":\"気まぐれタヒチ風うみ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/80/6/68006_1663796429s.jpg\"},{\"mixi_id\":\"65897\",\"nickname\":\"Hd3\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/58/97/65897_618022769s.jpg\"},{\"mixi_id\":\"46490\",\"nickname\":\"いのへい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/64/90/46490_2819739811s.jpg\"},{\"mixi_id\":\"23783\",\"nickname\":\"Magic☆\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/37/83/23783_3493635382s.jpg\"},{\"mixi_id\":\"271\",\"nickname\":\"隊長\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/71/271_1616171260s.jpg\"},{\"mixi_id\":\"267\",\"nickname\":\"antimo\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/67/267_920079190s.jpg\"},{\"mixi_id\":\"128\",\"nickname\":\"クラビノ・イーター\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/28/128_170347820s.jpg\"},{\"mixi_id\":\"118\",\"nickname\":\"saeco\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/18/118_2295403409s.jpg\"},{\"mixi_id\":\"112\",\"nickname\":\"yuki naito\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/12/112_3453845262s.jpg\"}]", "action"=>"register", "controller"=>"gadget", "owner"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}"}
+  [4;36;1mUser Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.9ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '12874032') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.8ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `friends` ON `users`.id = `friends`.friend_id WHERE ((`friends`.user_id = 1)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') ORDER BY users.mixi_id asc[0m
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '6992542') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '4856102') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '2892405') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '2273655') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1576010') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1432568') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1012572') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '821443') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '727131') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '707790') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '527171') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '376185') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '272391') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '238403') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '193945') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '165158') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '145381') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '124734') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '90352') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '68006') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '65897') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '46490') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '23783') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '271') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '267') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '128') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '118') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '112') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mFriend Load (0.3ms)[0m   [0mSELECT * FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;36;1mFriend Columns (12.8ms)[0m   [0;1mSHOW FIELDS FROM `friends`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.7ms)[0m   [0;1mUPDATE `users` SET `logged_at` = '2009-08-27 06:02:34', `updated_at` = '2009-08-27 06:02:34' WHERE `id` = 1[0m
+  [4;35;1mSQL (3.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') [0m
+  [4;35;1mFriend Load (0.4ms)[0m   [0mSELECT `friends`.* FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` IN (22,11,6,23,12,7,24,13,8,25,14,9,26,15,27,16,28,17,30,29,18,2,20,19,3,21,10,4,5)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT `friends`.* FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` IN (22,11,6,23,12,7,24,13,8,25,14,9,26,15,27,16,28,17,30,29,18,2,20,19,3,21,10,4,5)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:02:34') [0m
+Redirected to http://base.test.cyworks.jp/gadget/top?_mixiapp_session=9c03e7e32fe93916eee63dd861616de9&viewer=1
+Completed in 304ms (DB: 65) | 302 Found [http://base.test.cyworks.jp/gadget/register]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#top (for 192.168.11.100 at 2009-08-27 15:02:34) [GET]
+  Parameters: {"viewer"=>"1", "_mixiapp_session"=>"9c03e7e32fe93916eee63dd861616de9", "action"=>"top", "controller"=>"gadget"}
+Rendering template within layouts/application
+Rendering gadget/top
+Completed in 147ms (View: 8, DB: 1) | 200 OK [http://base.test.cyworks.jp/gadget/top?_mixiapp_session=9c03e7e32fe93916eee63dd861616de9&viewer=1]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#index (for 192.168.11.100 at 2009-08-27 15:02:34) [GET]
+  Parameters: {"_mixiapp_session"=>"9c03e7e32fe93916eee63dd861616de9", "action"=>"index", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/index
+Completed in 39ms (View: 10, DB: 1) | 200 OK [http://base.test.cyworks.jp/test?_mixiapp_session=9c03e7e32fe93916eee63dd861616de9]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#script (for 192.168.11.100 at 2009-08-27 15:02:41) [GET]
+  Parameters: {"_mixiapp_session"=>"9c03e7e32fe93916eee63dd861616de9", "action"=>"script", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/script
+Completed in 37ms (View: 9, DB: 1) | 200 OK [http://base.test.cyworks.jp/test/script?_mixiapp_session=9c03e7e32fe93916eee63dd861616de9]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#script2 to js (for 192.168.11.100 at 2009-08-27 15:02:43) [GET]
+  Parameters: {"format"=>"js", "_mixiapp_session"=>"9c03e7e32fe93916eee63dd861616de9", "action"=>"script2", "controller"=>"test", "str"=>"文字列1"}
+Rendering test/script2
+Completed in 33ms (View: 3, DB: 2) | 200 OK [http://base.test.cyworks.jp/test/script2.js?str=%E6%96%87%E5%AD%97%E5%88%971&_mixiapp_session=9c03e7e32fe93916eee63dd861616de9]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#script2 to js (for 192.168.11.100 at 2009-08-27 15:02:45) [GET]
+  Parameters: {"format"=>"js", "_mixiapp_session"=>"9c03e7e32fe93916eee63dd861616de9", "action"=>"script2", "controller"=>"test", "str"=>"文字列3"}
+Rendering test/script2
+Completed in 40ms (View: 3, DB: 1) | 200 OK [http://base.test.cyworks.jp/test/script2.js?str=%E6%96%87%E5%AD%97%E5%88%973&_mixiapp_session=9c03e7e32fe93916eee63dd861616de9]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#script2 (for 192.168.11.100 at 2009-08-27 15:02:47) [GET]
+  Parameters: {"_mixiapp_session"=>"9c03e7e32fe93916eee63dd861616de9", "action"=>"script2", "controller"=>"test", "str"=>"文字列2"}
+Rendering test/script2
+Completed in 38ms (View: 4, DB: 1) | 200 OK [http://base.test.cyworks.jp/test/script2?str=%E6%96%87%E5%AD%97%E5%88%972&_mixiapp_session=9c03e7e32fe93916eee63dd861616de9]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#script2 to js (for 192.168.11.100 at 2009-08-27 15:03:00) [GET]
+  Parameters: {"format"=>"js", "_mixiapp_session"=>"9c03e7e32fe93916eee63dd861616de9", "action"=>"script2", "controller"=>"test", "str"=>""}
+Rendering test/script2
+Completed in 46ms (View: 4, DB: 2) | 200 OK [http://base.test.cyworks.jp/test/script2.js?str=&_mixiapp_session=9c03e7e32fe93916eee63dd861616de9]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#activity to js (for 192.168.11.100 at 2009-08-27 15:03:03) [GET]
+  Parameters: {"format"=>"js", "_mixiapp_session"=>"9c03e7e32fe93916eee63dd861616de9", "action"=>"activity", "controller"=>"test", "str"=>"aaaa"}
+Rendering test/activity
+Completed in 46ms (View: 14, DB: 1) | 200 OK [http://base.test.cyworks.jp/test/activity.js?str=aaaa&_mixiapp_session=9c03e7e32fe93916eee63dd861616de9]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#index to xml (for 192.168.11.100 at 2009-08-27 15:03:47) [GET]
+  Parameters: {"v"=>"1251351171", "format"=>"xml", "action"=>"index", "controller"=>"gadget"}
+Rendering gadget/index
+Completed in 37ms (View: 29, DB: 1) | 200 OK [http://base.test.cyworks.jp/gadget.xml?v=1251351171]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#home (for 192.168.11.100 at 2009-08-27 15:03:49) [GET]
+  Parameters: {"viewer"=>"47028", "action"=>"home", "controller"=>"gadgetparts", "owner"=>"47028"}
+
+NameError (uninitialized constant GadgetpartsController):
+  
+
+Rendered rescues/_trace (55.7ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#home (for 192.168.11.100 at 2009-08-27 15:04:21) [GET]
+  Parameters: {"viewer"=>"47028", "action"=>"home", "controller"=>"gadget", "owner"=>"47028"}
+Rendering gadget/home
+Completed in 16ms (View: 8, DB: 0) | 200 OK [http://base.test.cyworks.jp/gadget/home?owner=47028&viewer=47028]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#home (for 192.168.11.100 at 2009-08-27 15:05:30) [GET]
+  Parameters: {"viewer"=>"47028", "action"=>"home", "controller"=>"gadget", "owner"=>"47028"}
+Rendering gadget/home
+Completed in 15ms (View: 9, DB: 0) | 200 OK [http://base.test.cyworks.jp/gadget/home?owner=47028&viewer=47028]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#index to xml (for 192.168.11.100 at 2009-08-27 15:05:33) [GET]
+  Parameters: {"v"=>"1251351171", "format"=>"xml", "action"=>"index", "controller"=>"gadget"}
+Rendering gadget/index
+Completed in 45ms (View: 38, DB: 0) | 200 OK [http://base.test.cyworks.jp/gadget.xml?v=1251351171]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#register (for 192.168.11.100 at 2009-08-27 15:05:35) [POST]
+  Parameters: {"viewer"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}", "friends"=>"[{\"mixi_id\":\"23612632\",\"thumbnail_url\":null},{\"mixi_id\":\"12874032\",\"nickname\":\"しゅうたろう\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/40/32/12874032_478443709s.jpg\"},{\"mixi_id\":\"6992542\",\"nickname\":\"NOV\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/42/6992542_3079675742s.jpg\"},{\"mixi_id\":\"4856102\",\"nickname\":\"Tien\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/2/4856102_4201823336s.jpg\"},{\"mixi_id\":\"2892405\",\"nickname\":\"ひろせ31\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/24/5/2892405_1293080365s.jpg\"},{\"mixi_id\":\"2273655\",\"nickname\":\"elastico\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/36/55/2273655_3990015965s.jpg\"},{\"mixi_id\":\"1576010\",\"nickname\":\"のむ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/60/10/1576010_1283611056s.jpg\"},{\"mixi_id\":\"1432568\",\"nickname\":\"よしてつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/68/1432568_3210904553s.jpg\"},{\"mixi_id\":\"1012572\",\"nickname\":\"きびたん＠SHANPY♪\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/25/72/1012572_4009106640s.jpg\"},{\"mixi_id\":\"821443\",\"nickname\":\"う−.*･゜\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/14/43/821443_3326428246s.jpg\"},{\"mixi_id\":\"727131\",\"nickname\":\"K @ M i  hentaisan\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/31/727131_3532985331s.jpg\"},{\"mixi_id\":\"707790\",\"nickname\":\"ぴょこぽん\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/77/90/707790_3967859727s.jpg\"},{\"mixi_id\":\"527171\",\"nickname\":\"tomoya\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/71/71/527171_3357683263s.jpg\"},{\"mixi_id\":\"376185\",\"nickname\":\"加藤＠ネオ虎\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/61/85/376185_3235521013s.jpg\"},{\"mixi_id\":\"272391\",\"nickname\":\"西小倉パンデイロ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/23/91/272391_2331921916s.jpg\"},{\"mixi_id\":\"238403\",\"nickname\":\"おがつ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/84/3/238403_3526442746s.jpg\"},{\"mixi_id\":\"193945\",\"nickname\":\"ophelia\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/39/45/193945_1861259059s.jpg\"},{\"mixi_id\":\"165158\",\"nickname\":\"nog\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/51/58/165158_3253036858s.jpg\"},{\"mixi_id\":\"145381\",\"nickname\":\"keik\",\"thumbnail_url\":\"http://img.mixi.jp/img/basic/common/noimage_member76.gif\"},{\"mixi_id\":\"124734\",\"nickname\":\"あふろ(onk)\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/47/34/124734_1799261299s.jpg\"},{\"mixi_id\":\"90352\",\"nickname\":\"nom\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/3/52/90352_1017462255s.jpg\"},{\"mixi_id\":\"68006\",\"nickname\":\"気まぐれタヒチ風うみ\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/80/6/68006_1663796429s.jpg\"},{\"mixi_id\":\"65897\",\"nickname\":\"Hd3\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/58/97/65897_618022769s.jpg\"},{\"mixi_id\":\"46490\",\"nickname\":\"いのへい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/64/90/46490_2819739811s.jpg\"},{\"mixi_id\":\"23783\",\"nickname\":\"Magic☆\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/37/83/23783_3493635382s.jpg\"},{\"mixi_id\":\"271\",\"nickname\":\"隊長\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/71/271_1616171260s.jpg\"},{\"mixi_id\":\"267\",\"nickname\":\"antimo\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/2/67/267_920079190s.jpg\"},{\"mixi_id\":\"128\",\"nickname\":\"クラビノ・イーター\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/28/128_170347820s.jpg\"},{\"mixi_id\":\"118\",\"nickname\":\"saeco\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/18/118_2295403409s.jpg\"},{\"mixi_id\":\"112\",\"nickname\":\"yuki naito\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/1/12/112_3453845262s.jpg\"}]", "action"=>"register", "controller"=>"gadget", "owner"=>"{\"mixi_id\":\"47028\",\"nickname\":\"あらい\",\"thumbnail_url\":\"http://profile.img.mixi.jp/photo/member/70/28/47028_3137173804s.jpg\"}"}
+  [4;36;1mUser Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '47028') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '12874032') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `friends` ON `users`.id = `friends`.friend_id WHERE ((`friends`.user_id = 1)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') ORDER BY users.mixi_id asc[0m
+  [4;35;1mUser Load (0.8ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '6992542') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '4856102') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '2892405') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '2273655') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1576010') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1432568') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (1.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '1012572') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '821443') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '727131') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '707790') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '527171') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '376185') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '272391') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '238403') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '193945') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '165158') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (1.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '145381') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '124734') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '90352') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '68006') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '65897') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '46490') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (1.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '23783') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '271') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '267') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '128') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '118') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`mixi_id` = '112') AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mFriend Load (1.1ms)[0m   [0mSELECT * FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;36;1mFriend Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `friends`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE `users` SET `logged_at` = '2009-08-27 06:05:35', `updated_at` = '2009-08-27 06:05:35' WHERE `id` = 1[0m
+  [4;35;1mSQL (18.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') [0m
+  [4;35;1mFriend Load (0.4ms)[0m   [0mSELECT `friends`.* FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` IN (22,11,6,23,12,7,24,13,8,25,14,9,26,15,27,16,28,17,30,29,18,2,20,19,3,21,10,4,5)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT `friends`.* FROM `friends` WHERE (`friends`.user_id = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` IN (22,11,6,23,12,7,24,13,8,25,14,9,26,15,27,16,28,17,30,29,18,2,20,19,3,21,10,4,5)) AND (users.deleted_at IS NULL OR users.deleted_at > '2009-08-27 06:05:35') [0m
+Redirected to http://base.test.cyworks.jp/gadget/top?_mixiapp_session=6a3ff4d021d1a9566d2bfb4e0533b62d&viewer=1
+Completed in 391ms (DB: 80) | 302 Found [http://base.test.cyworks.jp/gadget/register]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#top (for 192.168.11.100 at 2009-08-27 15:05:35) [GET]
+  Parameters: {"viewer"=>"1", "_mixiapp_session"=>"6a3ff4d021d1a9566d2bfb4e0533b62d", "action"=>"top", "controller"=>"gadget"}
+Rendering template within layouts/application
+Rendering gadget/top
+Completed in 40ms (View: 8, DB: 4) | 200 OK [http://base.test.cyworks.jp/gadget/top?_mixiapp_session=6a3ff4d021d1a9566d2bfb4e0533b62d&viewer=1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestController#index (for 192.168.11.100 at 2009-08-27 15:05:35) [GET]
+  Parameters: {"_mixiapp_session"=>"6a3ff4d021d1a9566d2bfb4e0533b62d", "action"=>"index", "controller"=>"test"}
+Rendering template within layouts/application
+Rendering test/index
+Completed in 35ms (View: 6, DB: 1) | 200 OK [http://base.test.cyworks.jp/test?_mixiapp_session=6a3ff4d021d1a9566d2bfb4e0533b62d]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (14.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (20.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mFriend Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `friends`[0m

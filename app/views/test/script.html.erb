@@ -1,0 +1,13 @@
+<h1>スクリプト</h1>
+
+<%= link_to_script "実行1", :url => '/test/script2.js', :with => {'str' => '文字列1'} %><br>
+<%= link_to_update "実行2", :url => '/test/script2', :with => {'str' => '文字列2'} %><br>
+<a href="#" onClick="<%= script_function :url => '/test/script2.js', :with => 'str=文字列3' %>">実行3</a><br>
+
+<form id="frm_test" onsubmit="return false;">
+<input type="text" name="str">
+<%= button_to_script '実行4', :url => '/test/script2.js', :submit => 'frm_test'  %>
+<%= button_to_script 'activity保存', :url => '/test/activity.js', :submit => 'frm_test'  %>
+</form>
+
+<%= link_to_update "戻る", :url => '/test' %><br>

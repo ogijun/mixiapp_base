@@ -1,0 +1,13 @@
+<h1>友達リスト</h1>
+
+<%= link_to_update "戻る", :url => '/game/top' %><br>
+
+<% session[:owner].friends.each {|user| %>
+<p>
+<a href="<%= user.profile_url %>" target="_blank"><img src="<%= user.thumbnail_url %>" border="0"></a><br>
+mixi_id: <%= user.mixi_id %><br>
+nickname: <%= user.nickname %><br>
+</p>
+<% } %>
+
+<%= link_to_update "戻る", :url => '/game/top' %><br>

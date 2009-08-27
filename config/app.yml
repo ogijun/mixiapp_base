@@ -1,0 +1,25 @@
+common: &common
+
+  session_key: _mixiapp_session
+  session_secret: Ng4CINK9QzoiUtinOLjHnGPQOHyDdkDz
+
+  application_id: 0
+  application_name: test
+  application_domain: base.test.cyworks.jp
+  application_ad_id: DUMMY_AD_ID
+  
+  author: CYWORKS
+  author_email: developer@cyworks.jp
+  
+  mixi_domain: mixi.jp
+  mixi_mobile_domain: ma002.mixi.jp
+
+development:
+  <<: *common
+
+test:
+  <<: *common
+
+production:
+  application_domain: base.mixi.cyworks.jp
+  <<: *common

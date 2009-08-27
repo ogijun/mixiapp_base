@@ -1,0 +1,12 @@
+<h1>スクリプト</h1>
+
+<%= link_to_script "実行1", :url => '/test/script.js', :with => {'str' => '文字列1'} %><br>
+<a href="#" onClick="<%= script_function :url => '/test/script.js', :with => 'str=文字列2' %>">実行2</a><br>
+
+<form id="frm_test" onsubmit="return false;">
+<input type="text" name="str">
+<%= button_to_script '実行3', :url => '/test/script.js', :submit => 'frm_test'  %>
+<%= button_to_script 'activity保存', :url => '/test/activity.js', :submit => 'frm_test'  %>
+</form>
+
+<%= link_to_update "戻る", :url => '/game/top' %><br>

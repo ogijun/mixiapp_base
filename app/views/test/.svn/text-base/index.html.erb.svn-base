@@ -1,0 +1,7 @@
+<h1>TOP</h1>
+
+<ul>
+<li><%= link_to_update "プロフィール", :url => '/test/profile' %></li>
+<li><%= link_to_update "友達リスト", :url => '/test/friends' %></li>
+<li><%= link_to_update "スクリプト", :url => '/test/script' %></li>
+</ul>

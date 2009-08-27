@@ -1,0 +1,57 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+html {
+	overflow: hidden;
+}
+body {
+	font-family: "Lucida Grande", "Hiragino Kaku Gothic Pro", "30D230E930AE30CE89D230B420Pro20W3", "30e130a430ea30aa", "FF2DFF3320FF3030B430B730C330AF", "Osaka", verdana, arial, sans-serif;
+}
+a {
+	text-decoration:none;
+}
+a:link    { color:#258fb8; }
+a:visited { color:#258fb8; }
+a:hover   { color:#996600; }
+a:active  { color:#996600; }
+a:focus   { color:#996600; }
+
+p {
+	margin: 0px;
+}
+img {
+	border: 0;
+}
+
+.clearfix:after {
+   content: ".";
+   display: block;
+   clear: both;
+   height: 0;
+   visibility: hidden;
+}
+.clearfix { display: inline-block; }
+/* exlude MacIE5 \*/
+* html .clearfix { height: 1% }
+.clearfix {display:block;}
+/* end MacIE5 */
+
+#gadget_container {
+	background: #ffffff;
+}
+#gadgetparts {
+	width: 212px;
+	height: 182px;
+}
+#main {
+	background: #ffffff;
+	
+	width: 945px;
+	min-height: 435px;
+	height: auto !important;
+	height: 435px;
+	
+	clear: both;
+}
+

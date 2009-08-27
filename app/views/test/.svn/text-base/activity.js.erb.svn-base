@@ -1,0 +1,6 @@
+var params = {};
+params[opensocial.Activity.Field.TITLE] = '<%= params[:str] %>';
+var activity = opensocial.newActivity(params);
+opensocial.requestCreateActivity(activity, opensocial.CreateActivityPriority.HIGH);
+$('#frm_test').reset();
+alert("activity「<%= params[:str] %>」を保存しました。");
