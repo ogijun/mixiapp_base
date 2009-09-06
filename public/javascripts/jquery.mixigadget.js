@@ -1,6 +1,7 @@
 /*
  * Mixi Application JavaScript Library 
  * (c)CYWORKS
+ * git://github.com/araimotoki/mixiapp_base.git
  *
  * Based on Unshiu Mixi Application JavaScript Library 
  * Copyright (c) 2009 Drecom
@@ -52,30 +53,36 @@
 		 * 自分と友達の情報をアプリケーションサーバへ登録するリクエストを投げる
 		 */
 		function canvasInit() {
-			var req = opensocial.newDataRequest();
-			
-			var idspec_owner = opensocial.IdSpec.PersonId.OWNER;
-			var idspec_viewer = opensocial.IdSpec.PersonId.VIEWER;
-			var idspec_friends = opensocial.newIdSpec({'userId':opensocial.IdSpec.PersonId.OWNER, 'groupId':opensocial.IdSpec.GroupId.FRIENDS});
-			
-			var friend_params = {};
-			friend_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 1000;
-			
-			req.add(req.newFetchPersonRequest(idspec_owner), "owner");
-			req.add(req.newFetchPersonRequest(idspec_viewer), "viewer");
-			req.add(req.newFetchPeopleRequest(idspec_friends, friend_params), "friends");
-			req.send(function (res) {
-				if (res.hadError()) {
-					updateContainerError();
-				} else {
-					var params = {
-						"owner" : person_to_json(res.get("owner").getData()),
-						"viewer" : person_to_json(res.get("viewer").getData()),
-						"friends" : people_to_json(res.get("friends").getData())
-					};
-					klass.requestContainer('/gadget/register', params, gadgets.io.MethodType.POST);
-				}
-			});
+			var opt_params = gadgets.views.getParams();
+			if (opt_params && opt_params.session_key && opt_params.session_id) {
+				klass.setSession(opt_params.session_key, opt_params.session_id);
+				klass.requestContainer('/gadget/top');
+			} else {
+				var req = opensocial.newDataRequest();
+				
+				var idspec_owner = opensocial.IdSpec.PersonId.OWNER;
+				var idspec_viewer = opensocial.IdSpec.PersonId.VIEWER;
+				var idspec_friends = opensocial.newIdSpec({'userId':opensocial.IdSpec.PersonId.OWNER, 'groupId':opensocial.IdSpec.GroupId.FRIENDS});
+				
+				var friend_params = {};
+				friend_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 1000;
+				
+				req.add(req.newFetchPersonRequest(idspec_owner), "owner");
+				req.add(req.newFetchPersonRequest(idspec_viewer), "viewer");
+				req.add(req.newFetchPeopleRequest(idspec_friends, friend_params), "friends");
+				req.send(function (res) {
+					if (res.hadError()) {
+						updateContainerError();
+					} else {
+						var params = {
+							"owner" : person_to_json(res.get("owner").getData()),
+							"viewer" : person_to_json(res.get("viewer").getData()),
+							"friends" : people_to_json(res.get("friends").getData())
+						};
+						klass.requestContainer('/gadget/register', params, gadgets.io.MethodType.POST);
+					}
+				});
+			}
 		}
 		
 		/**
@@ -230,7 +237,7 @@
 		 * ガジェットの表示をエラーとして更新する
 		 */
 		function updateContainerError() {
-			updateContainer('エラーが発生しました。');
+			updateContainer('エラーが発生したか、一定時間が経過したため接続を閉じました。ブラウザの再読込を行うか、アプリ一覧から再度このアプリを起動してください。');
 		}
 		
 		/**

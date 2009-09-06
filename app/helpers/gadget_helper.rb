@@ -36,10 +36,13 @@ module GadgetHelper
   end
   def navigate_function(options = {})
     navigate_tag = "gadgets.views.requestNavigateTo("
-    navigate_tag += "new gadgets.views.View('#{options[:view]}')"
-    navigate_tag += ", {" + (options[:url] ? "'url':'#{escape_javascript(url_for(options[:url]))}'" : "") + "}"
+    navigate_tag += "new gadgets.views.View('#{options[:view]}'), {"
+    navigate_tag += "'url':'#{escape_javascript(url_for(options[:url]))}'" if options[:url]
+    navigate_tag += "," if options[:url] && options[:session]
+    navigate_tag += "'session_key':'#{escape_javascript(request.session_options[:key])}','session_id':'#{escape_javascript(request.session_options[:id])}'" if options[:session]
+    navigate_tag += "}"
     navigate_tag += ", #{options[:owner_id]}" if options[:owner_id]
-    navigate_tag += ");"
+    navigate_tag += ")"
     navigate_tag
   end
   def external_function(options = {})

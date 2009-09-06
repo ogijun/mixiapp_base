@@ -38,11 +38,8 @@ class GadgetController < ApplicationController
 
     owner.save
     
-    session[:owner] = User.find(owner.id, :include => :friends)
-    session[:viewer] = User.find(viewer.id, :include => :friends)
-    
-    session[:owner].friends.sort!{|a, b| (a.mixi_id <=> b.mixi_id)}
-    session[:viewer].friends.sort!{|a, b| (a.mixi_id <=> b.mixi_id)}
+    session[:owner] = User.find(owner.id)
+    session[:viewer] = User.find(viewer.id)
     
     redirect_gadget_to :controller => "gadget", :action => "top"
   end
