@@ -1,0 +1,55 @@
+8
+
+dir
+62
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/paginating_find/lib
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T16:12:08.960047Z
+62
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+paginating_find.rb
+file
+
+
+
+
+2009-09-10T15:19:30.000000Z
+28fb0257d1dc7574c2ba8846e63b9f61
+2009-09-15T16:12:08.960047Z
+62
+arai
+has-props
+
+paging_helper.rb
+file
+
+
+
+
+2009-09-10T15:19:30.000000Z
+6c28f93974f4c9b90cdade4437482631
+2009-09-15T16:12:08.960047Z
+62
+arai
+has-props
+
+paging_enumerator.rb
+file
+
+
+
+
+2009-09-10T15:19:30.000000Z
+9360194d4ee59070ad1fba23a7154ed3
+2009-09-15T16:12:08.960047Z
+62
+arai
+has-props
+

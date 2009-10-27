@@ -1,0 +1,73 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/vendor/plugins/rspec/lib/spec/expectations
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+extensions
+dir
+
+handler.rb
+file
+
+
+
+
+2009-09-15T13:30:53.000000Z
+d58473cc7384d2366d164371d503e7e3
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+extensions.rb
+file
+
+
+
+
+2009-09-15T13:30:53.000000Z
+410737c1fdf6f1615e330aa5cb512ead
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+differs
+dir
+
+errors.rb
+file
+
+
+
+
+2009-09-15T13:30:53.000000Z
+f497f7c4e16c995a3dc005f8762a4d4b
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+

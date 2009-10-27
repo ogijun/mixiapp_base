@@ -1,0 +1,95 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/vendor/plugins/rspec-rails/spec/rails
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+extensions
+dir
+
+matchers
+dir
+
+spec_spec.rb
+file
+
+
+
+
+2009-09-15T13:30:41.000000Z
+be86f7dd6aff1c7c0833df6a91f81cae
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+autotest
+dir
+
+sample_modified_fixture.rb
+file
+
+
+
+
+2009-09-15T13:30:41.000000Z
+b22069935e3343ba0b71ef6480e9b710
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+example
+dir
+
+mocks
+dir
+
+spec_server_spec.rb
+file
+
+
+
+
+2009-09-15T13:30:41.000000Z
+94e07d47c1da253c994ad93f35a2e112
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+sample_spec.rb
+file
+
+
+
+
+2009-09-15T13:30:41.000000Z
+7efb6a0e3041e5318cf1f1aae7dcb226
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+

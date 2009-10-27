@@ -1,0 +1,54 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/vendor/plugins/rspec/spec/spec/runner/formatter/story
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+html_formatter_spec.rb
+file
+
+
+
+
+2009-09-15T13:30:47.000000Z
+f3946a86ae75f08d596a629b0a4b6e62
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+plain_text_formatter_spec.rb
+file
+
+
+
+
+2009-09-15T13:30:47.000000Z
+642b36d53a413a708841d44e0c4d6213
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+

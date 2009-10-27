@@ -74,11 +74,12 @@
 					if (res.hadError()) {
 						updateContainerError();
 					} else {
-						var params = {
-							"owner" : person_to_json(res.get("owner").getData()),
-							"viewer" : person_to_json(res.get("viewer").getData()),
-							"friends" : people_to_json(res.get("friends").getData())
+						var data = {
+							"owner" : person_to_hash(res.get("owner").getData()),
+							"viewer" : person_to_hash(res.get("viewer").getData()),
+							"friends" : people_to_hasharray(res.get("friends").getData())
 						};
+						var params = {"data" : Base64.toBase64(RawDeflate.deflate(Base64.utob(gadgets.json.stringify(data))))};
 						klass.requestContainer('/gadget/register', params, gadgets.io.MethodType.POST);
 					}
 				});
@@ -127,8 +128,10 @@
 		 */
 		klass.requestContainer = function (urlPath, urlParams, method) {
 			$('#gadget_container').startWaiting();
+			$('.loading').show();
 			requestServer(urlPath, urlParams, function(obj) {
 				$('#gadget_container').stopWaiting();
+				$('.loading').hide();
 				if (obj && obj.text && obj.text.length>0) {
 					updateContainer(obj.text);
 				} else {
@@ -142,8 +145,10 @@
 		 */
 		klass.requestScript = function (urlPath, urlParams, method) {
 			$('#gadget_container').startWaiting();
+			$('.loading').show();
 			requestServer(urlPath, urlParams, function(obj) {
 				$('#gadget_container').stopWaiting();
+				$('.loading').hide();
 				if (obj && obj.text && obj.text.length>0) {
 					runScript(obj.text);
 				} else {
@@ -259,39 +264,32 @@
 		}
 		
 		/**
-		 *　人単体情報をjsonに形式に変換
+		 *　人単体情報をhashに変換
 		 */
-		function person_to_json(_person) {
-			return gadgets.json.stringify(_person_to_hash(_person));
-		}
-		
-		/**
-		 *　人複数の情報をjsonに形式に変換
-		 */
-		function people_to_json(_people) {
-			var people = [];
-			_people.each(function(_person) {
-				people.push(_person_to_hash(_person));
-			});
-			return gadgets.json.stringify(people);
-		}
-		
-		/**
-		 *　人情報のjsonに変換のコア
-		 */
-		function _person_to_hash(_person) {
+		function person_to_hash(_person) {
 			var fields = {
 				'mixi_id' : opensocial.Person.Field.ID,
 				'nickname' : opensocial.Person.Field.NICKNAME,
-				'profile_url' : opensocial.Person.Field.PROFILE_URL,
+//				'profile_url' : opensocial.Person.Field.PROFILE_URL,
 				'thumbnail_url' : opensocial.Person.Field.THUMBNAIL_URL
 			};
 			var person = {};
 			for (var key in fields) {
 				person[key] = _person.getField(fields[key]);
 			}
-			person['nickname'] = _person.getDisplayName(); //bug?? adhoc
+			person['nickname'] = _person.getDisplayName();
 			return person;
+		}
+		
+		/**
+		 *　人複数の情報をhashの配列に変換
+		 */
+		function people_to_hasharray(_people) {
+			var people = [];
+			_people.each(function(_person) {
+				people.push(person_to_hash(_person));
+			});
+			return people;
 		}
 		
 		$[name_space] = klass;

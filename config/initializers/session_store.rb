@@ -7,6 +7,7 @@
 ActionController::Base.session = {
   :key         => AppResources[:session_key],
   :secret      => AppResources[:session_secret],
+  :expire_after=> 10.minutes,
   :cookie_only => false
 }
 

@@ -1,0 +1,159 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/vendor/plugins/rspec
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+plugins
+dir
+
+Rakefile
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+51b2ad6796a872974c27bbc8ae14b8fc
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+.autotest
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+b1da8089d1b3b0e7ef157fc16006fc12
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+UPGRADE
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+f28d0b8b8a7e2dea6a154391a05e16a3
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+rake_tasks
+dir
+
+stories
+dir
+
+spec
+dir
+
+README
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+0ea971e85d00ecb7fad45dc645b39dd2
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+init.rb
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+640f74b8156893c1bc98a2050c8589d3
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+TODO
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+68b329da9893e34099c7d8ad5cb9c940
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+lib
+dir
+
+story_server
+dir
+
+failing_examples
+dir
+
+bin
+dir
+
+CHANGES
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+378ed32693cd6001028e51ab2e3bd637
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+MIT-LICENSE
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+e52fb646a736962ed0bdd48ae2c242de
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+examples
+dir
+

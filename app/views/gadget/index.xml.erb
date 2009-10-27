@@ -6,7 +6,8 @@
     <Require feature="dynamic-height"/>
     <Require feature="flash" />
   </ModulePrefs>
-  <Content type="html">
+<% if AppResources[:pc_available] %>
+  <Content type="html" view="canvas,home,profile,preview">
     <![CDATA[
     
 <%= javascript_include_tag "jquery-1.3.2.min" %>
@@ -14,6 +15,8 @@
 <%= javascript_include_tag "jquery.protoload" %>
 <%= javascript_include_tag "jquery.mixigadget" %>
 <%= javascript_include_tag "jrails" %>
+<%= javascript_include_tag "base64" %>
+<%= javascript_include_tag "rawdeflate" %>
 <%= javascript_include_tag "application" %>
 
 <%= stylesheet_link_tag "style" %>
@@ -21,16 +24,29 @@
 <script type="text/javascript">
 (function(){
   $('#gadget_container').mixigadget({base_url: '<%= "#{request.protocol}#{request.host}:#{request.port}" %>'});
-
-  if (gadgets.views.getCurrentView().getName() == 'canvas') {
-    var src    = "http://<%= AppResources[:mixi_domain] %>/ad_application_program_invoker.pl";
-    var query  = "appli_id=<%= AppResources[:application_id] %>&amp;ad_id=<%= AppResources[:application_ad_id] %>";
-    document.writeln(['<scri','pt src="',src,'?',query,'&ts=',(new Date).getTime(),'">','</scri','pt>'].join(''));
-  }
 })();
 </script>
 <div id="gadget_container"></div>
 
     ]]> 
   </Content>
+  <Content type="html" view="canvas">
+    <![CDATA[
+
+<!-- MIXI AD PROGRAM -->
+<script type="text/javascript">/*<!--[*/
+(function(){
+       var url = "http://<%= AppResources[:mixi_domain] %>/ad_application_program_invoker.pl?appli_id=<%= AppResources[:application_id] %>&ad_id=<%= AppResources[:application_ad_id] %>";
+        document.writeln(['<scri','pt src="',url,'&ts=',(new Date).getTime(),'">','</scri','pt>'].join(''));
+})();
+--></script>
+<!-- END -->
+
+    ]]> 
+  </Content>
+<% end %>
+<% if AppResources[:mobile_available] %>
+  <Content type="url" view="mobile" href="<%= "#{request.protocol}#{request.host}:#{request.port}" %><%= AppResources[:application_top] %>" />
+<% end %>
+
 </Module>

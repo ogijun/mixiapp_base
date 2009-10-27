@@ -1,0 +1,172 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/vendor/plugins/rspec/lib/spec
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+story
+dir
+
+interop
+dir
+
+story.rb
+file
+
+
+
+
+2009-09-15T13:30:54.000000Z
+4ab3d712b369a8c7cbf667ad1e3349c8
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+rake
+dir
+
+version.rb
+file
+
+
+
+
+2009-09-15T13:30:54.000000Z
+cfbe6f541d00c76cda839b6580aa983b
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+translator.rb
+file
+
+
+
+
+2009-09-15T13:30:54.000000Z
+60e5faba8cdd949f28ffb81bfa7702b9
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+example
+dir
+
+example.rb
+file
+
+
+
+
+2009-09-15T13:30:54.000000Z
+8dce434cefbe38cdd7ec56a46910bc3b
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+extensions
+dir
+
+extensions.rb
+file
+
+
+
+
+2009-09-15T13:30:54.000000Z
+b5767724f28b18993ec36a7c304d3592
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+matchers
+dir
+
+expectations
+dir
+
+expectations.rb
+file
+
+
+
+
+2009-09-15T13:30:54.000000Z
+eaa26a937cfea67588c81da8651cfff8
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+matchers.rb
+file
+
+
+
+
+2009-09-15T13:30:54.000000Z
+b053febbe15d1baada0b1849ed1ad5ec
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+runner
+dir
+
+runner.rb
+file
+
+
+
+
+2009-09-15T13:30:54.000000Z
+6f5a8674c13943efaa2734d1b18f6ac6
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+mocks
+dir
+
+mocks.rb
+file
+
+
+
+
+2009-09-15T13:30:54.000000Z
+861ed21000f27acd46f54f43bb30f9ad
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+

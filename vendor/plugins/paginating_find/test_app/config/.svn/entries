@@ -1,0 +1,71 @@
+8
+
+dir
+62
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/paginating_find/test_app/config
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T16:12:08.960047Z
+62
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+routes.rb
+file
+
+
+
+
+2009-09-10T15:19:30.000000Z
+949765560ec55af456d4ccaf941330f9
+2009-09-15T16:12:08.960047Z
+62
+arai
+has-props
+
+database.yml
+file
+
+
+
+
+2009-09-10T15:19:30.000000Z
+e297c1dd283b57d52c858d8d01d7527f
+2009-09-15T16:12:08.960047Z
+62
+arai
+has-props
+
+boot.rb
+file
+
+
+
+
+2009-09-10T15:19:30.000000Z
+b4e6efc16b6a3cc9160570728b156a68
+2009-09-15T16:12:08.960047Z
+62
+arai
+has-props
+
+environment.rb
+file
+
+
+
+
+2009-09-10T15:19:30.000000Z
+44243024b861d5dac35e26bc3fc30a14
+2009-09-15T16:12:08.960047Z
+62
+arai
+has-props
+
+environments
+dir
+

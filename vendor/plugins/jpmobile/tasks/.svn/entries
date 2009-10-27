@@ -1,0 +1,41 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/tasks
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+jpmobile_tasks.rake
+file
+
+
+
+
+2009-09-15T13:30:26.000000Z
+833bcc2077a1f04266dc417dc2240e24
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+

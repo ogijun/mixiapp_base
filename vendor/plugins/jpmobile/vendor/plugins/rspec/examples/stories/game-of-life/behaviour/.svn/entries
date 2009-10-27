@@ -1,0 +1,47 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/vendor/plugins/rspec/examples/stories/game-of-life/behaviour
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+everything.rb
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+beaf2307a07600bf52ace4d05a3ff47f
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+stories
+dir
+
+examples
+dir
+

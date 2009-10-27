@@ -1,0 +1,57 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/vendor/plugins/rspec-rails/generators/rspec
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+rspec_generator.rb
+file
+
+
+
+
+2009-09-15T13:30:38.000000Z
+25ea67d7ce3e0db62cd8fbb671bb085a
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+CHANGES
+file
+
+
+
+
+2009-09-15T13:30:38.000000Z
+adb960ee3c661df732004d42dc0e9587
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+templates
+dir
+

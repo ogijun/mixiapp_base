@@ -1,0 +1,294 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/opensocial/doc/classes/OpenSocial
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+AuthException.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+614b778117f312d7d825a10fbf50825b
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+RpcRequest.src
+dir
+
+Person.src
+dir
+
+FetchPeopleRequest.src
+dir
+
+Activity.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+543a14b500c590c5aa9ee8e03b69ca4b
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+Group.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+9f21aceb8a81f7217b50b5a62a7dc12f
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+RpcRequest.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+38ff7f11188c076e2689e7c00f1f700d
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+AppData.src
+dir
+
+Base.src
+dir
+
+FetchGroupsRequest.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+2a323abbf43d1a46fa3c433a04153bb7
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+FetchPeopleRequest.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+b2f6fa2dae9eb0a0b911e174ccb4be16
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+RequestException.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+f1a0e6a67642ee2fb9f14c1740133f8f
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+FetchActivitiesRequest.src
+dir
+
+FetchPersonRequest.src
+dir
+
+Collection.src
+dir
+
+Activity.src
+dir
+
+Group.src
+dir
+
+FetchAppDataRequest.src
+dir
+
+Connection.src
+dir
+
+Auth.src
+dir
+
+FetchGroupsRequest.src
+dir
+
+FetchActivitiesRequest.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+94006f180f866c1bd9330beb41af4e4e
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+Request.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+c910a32621531b6b7e95d119eccefde7
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+FetchPersonRequest.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+5ad2393d74065f371affaa2ffd9336cf
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+Collection.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+b466afbc3de81c0271ca8c51e00bf335
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+FetchAppDataRequest.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+32c70d6ad5884659ae164d936ba05104
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+Connection.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+d2a35e7588380f5fdc7d87327ce12c89
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+Auth.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+c52cdb65bd4d899f1c9050601560d865
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+Person.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+dd7b9bd0c5aa0895b8e820d677e50d1f
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+Base.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+ba4c386b202d19c3dfc2fdd589c03e69
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+AppData.html
+file
+
+
+
+
+2009-09-15T13:31:02.000000Z
+540a78515ddfa462e1f906b45681235d
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+Request.src
+dir
+

@@ -1,0 +1,99 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/vendor/plugins/rspec/examples/stories
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+adder.rb
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+5dc243d560fad04e81dcc4010efd54c5
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+helper.rb
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+fdd0b145f188f95f2a80d0316024736f
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+game-of-life
+dir
+
+addition
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+2c4eeed776fbe2a992ac4254ba8200f8
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+calculator.rb
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+ea4ab9660ea699e72ba47c7b4944bcd7
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+addition.rb
+file
+
+
+
+
+2009-09-15T13:30:55.000000Z
+b8df8dfe6df75c7647ee35b7804fbf7f
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+steps
+dir
+

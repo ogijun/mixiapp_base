@@ -2,5 +2,5 @@
 $.mixigadget.setSession('<%= request.session_options[:key] %>', '<%= request.session_options[:id] %>');
 
 var opt_params = gadgets.views.getParams();
-$.mixigadget.requestContainer(opt_params && opt_params.url ? opt_params.url : '/test');
+$.mixigadget.requestContainer(opt_params && opt_params.url ? opt_params.url : '<%= AppResources[:application_top] %>');
 </script>

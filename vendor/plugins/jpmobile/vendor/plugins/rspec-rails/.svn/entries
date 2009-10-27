@@ -1,0 +1,111 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/vendor/plugins/rspec-rails
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+Rakefile
+file
+
+
+
+
+2009-09-15T13:30:42.000000Z
+739de93985df731408dc32643c5d577a
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+spec_resources
+dir
+
+tasks
+dir
+
+init.rb
+file
+
+
+
+
+2009-09-15T13:30:42.000000Z
+640f74b8156893c1bc98a2050c8589d3
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+lib
+dir
+
+stories
+dir
+
+CHANGES
+file
+
+
+
+
+2009-09-15T13:30:42.000000Z
+7b482af39201301daaa0efcecc22cfe1
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+generators
+dir
+
+MIT-LICENSE
+file
+
+
+
+
+2009-09-15T13:30:42.000000Z
+313081092d4b1e5f1e1a72e356485c1a
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+spec
+dir
+
+README
+file
+
+
+
+
+2009-09-15T13:30:42.000000Z
+7f43e7742115780c1cca395e6d7b4424
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+

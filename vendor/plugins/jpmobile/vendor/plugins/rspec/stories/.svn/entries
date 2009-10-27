@@ -1,0 +1,69 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/vendor/plugins/rspec/stories
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+interop
+dir
+
+helper.rb
+file
+
+
+
+
+2009-09-15T13:30:44.000000Z
+6c263e3c2887fd3487b2bd1b22807078
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+mock_framework_integration
+dir
+
+example_groups
+dir
+
+resources
+dir
+
+all.rb
+file
+
+
+
+
+2009-09-15T13:30:44.000000Z
+1301ef6a98e5cd6b4ce90dcb9fe066a4
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+pending_stories
+dir
+

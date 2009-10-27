@@ -1,0 +1,68 @@
+8
+
+dir
+62
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/paginating_find/test_app/test/fixtures
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T16:12:08.960047Z
+62
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+authors.yml
+file
+
+
+
+
+2009-09-10T15:19:30.000000Z
+e2b911abd2f4cfff609bb310498bec90
+2009-09-15T16:12:08.960047Z
+62
+arai
+has-props
+
+models.rb
+file
+
+
+
+
+2009-09-10T15:19:30.000000Z
+668208a2bbf46b995ea8ccf3450e6a3f
+2009-09-15T16:12:08.960047Z
+62
+arai
+has-props
+
+articles.yml
+file
+
+
+
+
+2009-09-10T15:19:30.000000Z
+a5396bba4e6fe1475da01228f0775b44
+2009-09-15T16:12:08.960047Z
+62
+arai
+has-props
+
+edits.yml
+file
+
+
+
+
+2009-09-10T15:19:30.000000Z
+72ea607e6299d73e6f44f1fdb112e22f
+2009-09-15T16:12:08.960047Z
+62
+arai
+has-props
+

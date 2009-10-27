@@ -1,0 +1,54 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/vendor/plugins/rspec/stories/resources/test
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+test_case_with_should_methods.rb
+file
+
+
+
+
+2009-09-15T13:30:43.000000Z
+14b6fb666c843b25d9e9a63c2e1d274d
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+spec_and_test_together.rb
+file
+
+
+
+
+2009-09-15T13:30:43.000000Z
+5e682a588103a52521329863f059808b
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+

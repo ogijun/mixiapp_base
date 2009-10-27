@@ -1,0 +1,54 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/opensocial/lib/opensocial/auth
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+action_controller_request.rb
+file
+
+
+
+
+2009-09-15T13:31:03.000000Z
+26a857d6270edbf3d5ed1c74ff4594c4
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+base.rb
+file
+
+
+
+
+2009-09-15T13:31:03.000000Z
+64f5046e0097c302b128e2e34e09d43d
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+

@@ -1,0 +1,54 @@
+8
+
+dir
+59
+svn+ssh://192.168.11.101/var/svn/repos/mixi_damens/trunk/vendor/plugins/jpmobile/vendor/plugins/rspec/lib/autotest
+svn+ssh://192.168.11.101/var/svn
+
+
+
+2009-09-15T13:29:36.079807Z
+59
+arai
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+65291be4-14d0-4549-b293-d2dd2362fb42
+
+discover.rb
+file
+
+
+
+
+2009-09-15T13:30:49.000000Z
+0eed8166bd4b13ef4eb130b96f3e2ebc
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
+rspec.rb
+file
+
+
+
+
+2009-09-15T13:30:49.000000Z
+42e9db36bd97c096849d75b7fac48c23
+2009-09-15T13:29:36.079807Z
+59
+arai
+has-props
+
