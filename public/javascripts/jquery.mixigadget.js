@@ -18,6 +18,7 @@
 		config = jQuery.extend({
 				session_id: "",
 				session_key: "",
+				viewer_id: "",
 				base_url: "",
 				app_url: "",
 				owner_only: false,
@@ -88,6 +89,7 @@
 							window.open(config.app_url, '_parent');
 							return false;
 						}
+						config.viewer_id = viewer_data['mixi_id'];
 						
 						var params = {
 							"owner" : gadgets.json.stringify(owner_data),
@@ -145,6 +147,7 @@
 						"owner" : owner.getField(opensocial.Person.Field.ID),
 						"viewer" : viewer.getField(opensocial.Person.Field.ID)
 					};
+					config.viewer_id = viewer.getField(opensocial.Person.Field.ID);
 					klass.requestContainer('/gadget/'+view, params);
 				}
 			});
@@ -267,6 +270,8 @@
 				var query = toQueryString(urlParams);
 				if (query.length>0) url += (url.indexOf("?")==-1 ? "?" : "&") + query;
 			}
+			url += (url.indexOf("?")==-1 ? "?" : "&") + 'opensocial_viewer_id=' + config.viewer_id;
+			
 			gadgets.io.makeRequest(url, callbackFunction, params);
 		}
 		
