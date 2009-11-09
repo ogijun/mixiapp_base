@@ -37,7 +37,7 @@ module Jpmobile
         c = Jpmobile::Mobile.const_get(const)
         return @__mobile = c.new(self) if c::USER_AGENT_REGEXP && user_agent =~ c::USER_AGENT_REGEXP
       end
-      return @__mobile = Jpmobile::Mobile::Docomo.new(self) # for debug
+      #@__mobile = Jpmobile::Mobile::Docomo.new(self) if user_agent =~ /^mixi\-platform/
       nil
     end
     

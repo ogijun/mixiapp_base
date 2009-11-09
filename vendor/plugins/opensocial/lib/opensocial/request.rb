@@ -100,6 +100,7 @@ module OpenSocial #:nodoc:
     # parameters and signature are appended to the request.
     def dispatch(uri, post_data = nil)
       http = Net::HTTP.new(uri.host, uri.port)
+      http.read_timeout = 3
       
       if post_data
         if @connection.container[:use_request_body_hash]

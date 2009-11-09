@@ -11,7 +11,7 @@
  * http://wiki.unshiu.jp/UPL/ 
  */
 ;(function($) {
-
+	Deferred.define();
 	var name_space = 'mixigadget';
 	$.fn[name_space] = function(config){
 		// 引数 デフォルト値
@@ -19,6 +19,11 @@
 				session_id: "",
 				session_key: "",
 				base_url: "",
+				app_url: "",
+				owner_only: false,
+				has_app_filter: false,
+				debug_flag: false,
+				register_friends_post_size: 100,
 				view_name: gadgets.views.getCurrentView().getName()
 			},config);
 		
@@ -66,6 +71,7 @@
 				
 				var friend_params = {};
 				friend_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 1000;
+				if (config.has_app_filter) friend_params[opensocial.DataRequest.PeopleRequestFields.FILTER] = opensocial.DataRequest.FilterType.HAS_APP;
 				
 				req.add(req.newFetchPersonRequest(idspec_owner), "owner");
 				req.add(req.newFetchPersonRequest(idspec_viewer), "viewer");
@@ -74,13 +80,49 @@
 					if (res.hadError()) {
 						updateContainerError();
 					} else {
-						var data = {
-							"owner" : person_to_hash(res.get("owner").getData()),
-							"viewer" : person_to_hash(res.get("viewer").getData()),
-							"friends" : people_to_hasharray(res.get("friends").getData())
+						owner_data = person_to_hash(res.get("owner").getData());
+						viewer_data = person_to_hash(res.get("viewer").getData());
+						friends_data = people_to_hasharray(res.get("friends").getData());
+						
+						if (config.owner_only && owner_data['mixi_id'] != viewer_data['mixi_id']) {
+							window.open(config.app_url, '_parent');
+							return false;
+						}
+						
+						var params = {
+							"owner" : gadgets.json.stringify(owner_data),
+							"viewer" : gadgets.json.stringify(viewer_data)
 						};
-						var params = {"data" : Base64.toBase64(RawDeflate.deflate(Base64.utob(gadgets.json.stringify(data))))};
-						klass.requestContainer('/gadget/register', params, gadgets.io.MethodType.POST);
+						klass.requestDeferred('/gadget/register_user', params, gadgets.io.MethodType.POST)
+						.next(function(data){
+							runScript(data.text);
+						})
+						.next(function(){
+							loopTimes = Math.ceil(friends_data.length / config.register_friends_post_size);
+							return loop(loopTimes, function(index){
+								var current_friends_data = friends_data.slice(index*config.register_friends_post_size, (index+1)*config.register_friends_post_size);
+								var params = {
+									"friends" : gadgets.json.stringify(current_friends_data)
+								};
+								return klass.requestDeferred('/gadget/register_friends', params, gadgets.io.MethodType.POST);
+							});
+						})
+						.next(function(){
+							var friend_ids = [];
+							for (i in friends_data) {
+								friend_ids.push(friends_data[i]['mixi_id']);
+							}
+							var params = {
+								"friend_mixi_ids" : gadgets.json.stringify(friend_ids)
+							};
+							return klass.requestDeferred('/gadget/register_friendships', params, gadgets.io.MethodType.POST);
+						})
+						.next(function(){
+							klass.requestContainer('/gadget/top');
+						})
+						.error(function(e){
+							updateContainerError(e);
+						});
 					}
 				});
 			}
@@ -129,13 +171,15 @@
 		klass.requestContainer = function (urlPath, urlParams, method) {
 			$('#gadget_container').startWaiting();
 			$('.loading').show();
-			requestServer(urlPath, urlParams, function(obj) {
+			requestServer(urlPath, urlParams, function(data) {
 				$('#gadget_container').stopWaiting();
 				$('.loading').hide();
-				if (obj && obj.text && obj.text.length>0) {
-					updateContainer(obj.text);
+				if (data && data.rc==200) {
+					updateContainer(data.text);
 				} else {
-					updateContainerError();
+					errorMessage = "ERROR : klass.requestContainer : " + urlPath + " faild."
+					if (data) { errorMessage += "(" + data.rc + ")"; }
+					updateContainerError(errorMessage);
 				}
 			}, method);
 		}
@@ -146,15 +190,53 @@
 		klass.requestScript = function (urlPath, urlParams, method) {
 			$('#gadget_container').startWaiting();
 			$('.loading').show();
-			requestServer(urlPath, urlParams, function(obj) {
+			requestServer(urlPath, urlParams, function(data) {
 				$('#gadget_container').stopWaiting();
 				$('.loading').hide();
-				if (obj && obj.text && obj.text.length>0) {
-					runScript(obj.text);
+				if (data && data.rc==200) {
+					runScript(data.text);
 				} else {
-					runScriptError();
+					errorMessage = "ERROR : klass.requestScript : " + urlPath + " faild."
+					if (data) { errorMessage += "(" + data.rc + ")"; }
+					runScriptError(errorMessage);
 				}
 			}, method);
+		}
+		
+		/**
+		 * リクエスト内容をアプリケーションサーバへなげる(jsDeferred用)
+		 */
+		klass.requestDeferred = function (urlPath, urlParams, method) {
+			var deferred = new Deferred();
+			requestServer(urlPath, urlParams, function(data) {
+				if (data && data.rc==200) {
+					deferred.call(data);
+				} else {
+					errorMessage = "ERROR : klass.requestContainer : " + urlPath + " faild."
+					if (data) { errorMessage += "(" + data.rc + ")"; }
+					if (config.debug_flag) {
+						deferred.fail(data.text);
+					} else {
+						deferred.fail(errorMessage);
+					}
+				}
+			}, method);
+			return deferred;
+		}
+		
+		/**
+		 *　ユーザ招待をする画面をポップアップで表示
+		 */
+		klass.requestInvite = function(callbackFunction) {
+			opensocial.requestShareApp("VIEWER_FRIENDS", null, function(response) {
+				// 現時点で成功しても　hadError()　がかえるのでそこが解消するまで一旦サスペンド
+				// if (response.hadError()) { 
+				//  	updateContainerError();
+				// } else {
+				// }
+				var params = {"invite_mixi_ids" : gadgets.json.stringify(response.getData()["recipientIds"])};
+				requestServer('/gadget/register_invite', params, callbackFunction, gadgets.io.MethodType.POST);
+			});
 		}
 		
 		/**
@@ -168,20 +250,22 @@
 				urlParams = parseQuery(urlParams);
 			}
 			if (config.session_id) urlParams[config.session_key] = config.session_id;
+			urlParams["nocache"] = (new Date()).strftime('%Y%m%d%H%M%S')
 			
 			var params = {};
 			params[gadgets.io.RequestParameters.METHOD] = method;
 			params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.TEXT;
+			params[gadgets.io.RequestParameters.REFRESH_INTERVAL] = 0
 			
 			var url = "";
 			if (method == gadgets.io.MethodType.POST) {
 				url = config.base_url + urlPath;
-				params[gadgets.io.RequestParameters.POST_DATA] = gadgets.io.encodeValues(urlParams);
+				params[gadgets.io.RequestParameters.POST_DATA] = encodeValues(urlParams);
 			} else {
 				url = config.base_url + urlPath;
 				
 				var query = toQueryString(urlParams);
-				if (query.length>0) url += "?" + query;
+				if (query.length>0) url += (url.indexOf("?")==-1 ? "?" : "&") + query;
 			}
 			gadgets.io.makeRequest(url, callbackFunction, params);
 		}
@@ -207,10 +291,53 @@
 				var pairs = query.split("&");
 				for (var i = 0; i < pairs.length; i++) {
 					var kv = pairs[i].split("=");
-					params[decodeURIComponent(kv[0].replace(/\+/g, ' '))] = kv[1] ? decodeURIComponent(kv[1].replace(/\+/g, ' ')) : '';
+					var params_key = decodeURIComponent(kv[0].replace(/\+/g, ' '));
+					var params_value = kv[1] ? decodeURIComponent(kv[1].replace(/\+/g, ' ')) : '';
+					
+					if(params[params_key] == null) {
+						// nothing
+					} else if(typeof(params[params_key]) == "string" || params[params_key] instanceof String) {
+						params_value = [params[params_key], params_value];
+					} else if(typeof(params[params_key]) == "array" || params[params_key] instanceof Array) {
+						params_value = params[params_key].concat([params_value]);
+					}
+					params[params_key] = params_value;
 				}
 			}
 			return params;
+		}
+		
+		/**
+		 *　リクエスト情報をhtmlエンコードする
+		 */
+		function encodeValues(fields, opt_noEscaping) {
+			var escape = !opt_noEscaping;
+			
+			var buf = [];
+			var first = false;
+			for (var i in fields) if (fields.hasOwnProperty(i)) {
+				if (!first) {
+					first = true;
+				} else {
+					buf.push("&");
+				}
+				if (fields[i] instanceof Array) {
+					var array = fields[i];
+					for(var j = 0 ; j < array.length ; j++) {
+						buf.push(escape ? encodeURIComponent(i) : i);
+						buf.push("=");
+						buf.push(escape ? encodeURIComponent(array[j]) : array[j])
+						if (j != array.length - 1) {
+							buf.push("&");
+						}
+					}
+				} else {
+					buf.push(escape ? encodeURIComponent(i) : i);
+					buf.push("=");
+					buf.push(escape ? encodeURIComponent(fields[i]) : fields[i]);
+				}
+			}
+			return buf.join("");
 		}
 		
 		/**
@@ -241,8 +368,11 @@
 		/**
 		 * ガジェットの表示をエラーとして更新する
 		 */
-		function updateContainerError() {
-			updateContainer('エラーが発生したか、一定時間が経過したため接続を閉じました。ブラウザの再読込を行うか、アプリ一覧から再度このアプリを起動してください。');
+		function updateContainerError(errorMessage) {
+			message = 'mixiとの通信にエラーが発生したか、一定時間が経過したため接続を閉じました。';
+			if (typeof(errorMessage) != "undefined") message += errorMessage;
+			message += '<br><a href="#" onclick="location.reload();">TOPに戻る</a><br>';
+			updateContainer(message);
 		}
 		
 		/**
@@ -252,15 +382,15 @@
 			try {
 				eval(script);
 			} catch (e) {
-				runScriptError();
+				runScriptError(e);
 			}
 		}
 		
 		/**
 		 * スクリプトの実行に問題が起こった際の処理。
 		 */
-		function runScriptError() {
-			alert('エラーが発生しました。');
+		function runScriptError(e) {
+			alert('エラーが発生しました。' + e);
 		}
 		
 		/**

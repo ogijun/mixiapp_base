@@ -1,5 +1,3 @@
-require 'json'
-
 class MixiApi
   def initialize(requester)
     container = {
@@ -52,53 +50,69 @@ class MixiApi
     OpenSocial::PostAppDataRequest.new(@connection).send(data.to_json) if data
   end
   
-  def self.register(request, params, session)
-    if request.mobile?
-      return false if !params['opensocial_owner_id']
-      api = MixiApi.new(params['opensocial_owner_id'])
-      owner_data = api.get_person
-      friends_data = api.get_people
-    else
-      json_data = JSON.parse(Zlib::Inflate.new(-Zlib::MAX_WBITS).inflate(params['data'].unpack('m')[0]), :create_additions => false)
-      owner_data = json_data['owner']
-      viewer_data = json_data['viewer']
-      friends_data = json_data['friends']
-    end
-    
+  def self.register_user(session, owner_data, viewer_data = nil)
     owner = User.create_or_update(owner_data)
-    if !viewer_data || viewer_data["mixi_id"] == owner_data["mixi_id"]
+    if !viewer_data || viewer_data["mixi_id"] == owner.mixi_id
       viewer = owner
     else
       viewer = User.create_or_update(viewer_data)
     end
     
-    owner.logged_at = Time.now
-    if owner == viewer && owner.joined_at.nil?
-      owner.joined_at = Time.now
+    if owner == viewer
+      owner.logged_at = Time.current
+      if owner.joined_at.nil?
+        owner.joined_at = Time.current
+        
+        app_invites = AppInvite.find_all_by_invitee_mixi_id(owner.mixi_id)
+        app_invites.each do |app_invite|
+          app_invite.invite_status = AppInvite::INVITE_STATUS_INSTALLED
+          app_invite.save
+        end
+      end
+      owner.save
     end
-    
-    curr_friend_user_ids = []
-    friends_data.each do |friend_data|
-      next if !friend_data || !friend_data["nickname"] #アプリ使用不可ユーザ
-      
-      user = User.create_or_update(friend_data)
-      owner.friends << user unless owner.friends.member?(user)
-      curr_friend_user_ids << user.id
-    end
-    
-    owner.friend_ships.each do |friend_ship|
-      friend_ship.destroy unless curr_friend_user_ids.member?(friend_ship.friend_id)
-    end
-    
-    owner.save
     
     session[:viewer] = viewer
     session[:owner] = owner
   end
+
+  def self.register_friends(session, friends_data)
+    friends_data.each do |friend_data|
+      next if !friend_data || !friend_data["nickname"] #アプリ使用不可ユーザ
+      user = User.create_or_update(friend_data)
+    end
+  end
+  
+  def self.register_friendships(session, friend_mixi_ids)
+    owner = session[:owner]
+    owner.friends = User.find(:all, :conditions => ["mixi_id in (?)", friend_mixi_ids], :select => "id, mixi_id")
+    owner.save
+  end
+  
+  def self.register_invite(session, invite_mixi_ids)
+    owner = session[:owner]
+    invite_mixi_ids.each do |invite_mixi_id|
+      app_invite = AppInvite.find_or_initialize_by_mixi_id_and_invitee_mixi_id(owner.mixi_id, invite_mixi_id)
+      app_invite.invite_status = AppInvite::INVITE_STATUS_INVITED
+      app_invite.save
+    end
+  end
+  
+  def self.register_mobile(session, owner_id)
+    return if !owner_id
+    
+    api = self.new(owner_id)
+    owner_data = api.get_person
+    friends_data = api.get_people
+    
+	self.register_user(session, owner_data)
+	self.register_friends(session, friends_data)
+	self.register_friendships(session, friends_data.collect{|friend_data| friend_data['mixi_id']})
+  end
   
   protected
   def parse_json(data)
-    JSON.parse(data, :create_additions => false)
+    data.is_a?(Hash) ? data : JSON.parse(data, :create_additions => false)
   end
   
   def convert_person(hash)

@@ -4,7 +4,7 @@
 
 <% current_owner.friends.each {|user| %>
 <p>
-<a href="<%= user.profile_url %>" target="_blank"><img src="<%= user.thumbnail_url %>" border="0"></a><br>
+<img src="<%= user.thumbnail_url %>" border="0"><br>
 mixi_id: <%= user.mixi_id %><br>
 nickname: <%= user.nickname %><br>
 </p>

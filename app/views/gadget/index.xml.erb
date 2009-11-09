@@ -12,21 +12,21 @@
     
 <%= javascript_include_tag "jquery-1.3.2.min" %>
 <%= javascript_include_tag "jquery-ui-1.7.2.custom.min" %>
+<%= javascript_include_tag "jsdeferred.mini.js" %>
 <%= javascript_include_tag "jquery.protoload" %>
 <%= javascript_include_tag "jquery.mixigadget" %>
 <%= javascript_include_tag "jrails" %>
-<%= javascript_include_tag "base64" %>
-<%= javascript_include_tag "rawdeflate" %>
+<%= javascript_include_tag "strftime" %>
 <%= javascript_include_tag "application" %>
 
 <%= stylesheet_link_tag "style" %>
 
 <script type="text/javascript">
 (function(){
-  $('#gadget_container').mixigadget({base_url: '<%= "#{request.protocol}#{request.host}:#{request.port}" %>'});
+  $('#gadget_container').mixigadget({base_url: 'http://<%= AppResources[:application_domain] %>'});
 })();
 </script>
-<div id="gadget_container"></div>
+<div id="gadget_container">Now Loading...</div>
 
     ]]> 
   </Content>
@@ -46,7 +46,7 @@
   </Content>
 <% end %>
 <% if AppResources[:mobile_available] %>
-  <Content type="url" view="mobile" href="<%= "#{request.protocol}#{request.host}:#{request.port}" %><%= AppResources[:application_top] %>" />
+  <Content type="url" view="mobile" href="http://<%= AppResources[:application_domain] %><%= AppResources[:application_mobile_top] %>" />
 <% end %>
 
 </Module>

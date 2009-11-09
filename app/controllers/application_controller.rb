@@ -6,10 +6,15 @@ class ApplicationController < ActionController::Base
   init_gettext "application"
   helper :all # include all helpers, all the time
   helper_method :current_owner, :current_viewer, :is_owner?, :is_friend?
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  #protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
+
+  transit_sid :always
+  mobile_filter :hankaku => true
+  emoticon_filter :editable_tag => false
+  after_filter :set_header
 
   private
   def set_header
@@ -19,11 +24,11 @@ class ApplicationController < ActionController::Base
   end
   
   def current_viewer
-    session[:viewer]
+    session[:viewer] ? session[:viewer].dup : nil
   end
   
   def current_owner
-    session[:owner]
+    session[:owner] ? session[:owner].dup : nil
   end
   
   def is_owner?
@@ -34,25 +39,36 @@ class ApplicationController < ActionController::Base
     current_viewer.friends.member?(current_owner)
   end
   
-  def adjust_session
-    session[:owner].send(:remove_instance_variable, :@friends) if session[:owner] && session[:owner].send(:instance_variable_get, :@friends)
-    session[:viewer].send(:remove_instance_variable, :@friends) if session[:viewer] && session[:viewer].send(:instance_variable_get, :@friends)
-  end
-  
   def validate_session
+    is_error = false
     if request.mobile? && !current_viewer
-      MixiApi.register(request, params, session)
+      begin
+        MixiApi.register_mobile(session, params['opensocial_owner_id'])
+      rescue Timeout::Error
+        logger.error "MixiApi.register_mobile TIMEOUT ERROR!"
+        is_error = true
+      rescue
+        logger.error "MixiApi.register_mobile ERROR!"
+        is_error = true
+      end
     end
     
-    if current_viewer
-      true
-    else
-      #session timeout
+    if is_error
+      #API timeout
       respond_to do |format|
-        format.html { redirect_to :controller => 'gadget', :action => 'timeout', :format => 'html' }
-        format.js   { redirect_to :controller => 'gadget', :action => 'timeout', :format => 'js' }
+        format.html { redirect_gadget_to :controller => 'gadget', :action => 'error', :format => 'html' }
+        format.js   { redirect_gadget_to :controller => 'gadget', :action => 'error', :format => 'js' }
       end
       false
+    elsif !current_viewer
+      #session timeout
+      respond_to do |format|
+        format.html { redirect_gadget_to :controller => 'gadget', :action => 'timeout', :format => 'html' }
+        format.js   { redirect_gadget_to :controller => 'gadget', :action => 'timeout', :format => 'js' }
+      end
+      false
+    else
+      true
     end
   end
   
@@ -75,8 +91,8 @@ class ApplicationController < ActionController::Base
     else
       #invalid access?
       respond_to do |format|
-        format.html { redirect_gadget_to :controller => 'gadget', :action => 'error', :format => 'html' }
-        format.js   { redirect_gadget_to :controller => 'gadget', :action => 'error', :format => 'js' }
+        format.html { redirect_gadget_to :controller => 'gadget', :action => 'error_friend', :format => 'html' }
+        format.js   { redirect_gadget_to :controller => 'gadget', :action => 'error_friend', :format => 'js' }
       end
       false
     end
@@ -84,8 +100,6 @@ class ApplicationController < ActionController::Base
   
   def redirect_gadget_to(options = {}, response_status = {})
     if options.is_a?(Hash)
-#      options[:opensocial_owner_id] = current_owner.mixi_id if current_owner
-      options[:viewer] = current_viewer
       options[:nocache] = DateTime.current.strftime("%Y%m%d%H%M%S")
       options[request.session_options[:key]] = request.session_options[:id]
     end

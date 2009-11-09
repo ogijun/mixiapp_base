@@ -1,11 +1,6 @@
 class GadgetController < ApplicationController
   caches_page :index
-  transit_sid :mobile
-  mobile_filter :hankaku => true
-  protect_from_forgery :except => ["index", "register", "top", "timeout"]
-  before_filter :validate_session, :only => [:top]
-  after_filter :adjust_session, :only => [:register, :top]
-  after_filter :set_header
+  before_filter :validate_session, :only => [:register_friends, :register_friendships, :top]
   
   def index
     respond_to do |format|
@@ -13,9 +8,24 @@ class GadgetController < ApplicationController
     end
   end
   
-  def register
-    MixiApi.register(request, params, session)
-    redirect_gadget_to :controller => "gadget", :action => "top"
+  def register_user
+    MixiApi.register_user(session, JSON.parse(params['owner'], :create_additions => false), JSON.parse(params['viewer'], :create_additions => false))
+    render :layout => false
+  end
+  
+  def register_friends
+    MixiApi.register_friends(session, JSON.parse(params['friends'], :create_additions => false))
+    render :layout => false
+  end
+  
+  def register_friendships
+    MixiApi.register_friendships(session, JSON.parse(params['friend_mixi_ids'], :create_additions => false))
+    render :layout => false
+  end
+  
+  def register_invite
+    MixiApi.register_invite(session, JSON.parse(params['invite_mixi_ids'], :create_additions => false))
+    render :layout => false
   end
   
   def top

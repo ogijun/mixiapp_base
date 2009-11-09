@@ -1,12 +1,14 @@
 common: &common
-  session_key: _mixiapp_session
+  session_key: _sid
   session_secret: Ng4CINK9QzoiUtinOLjHnGPQOHyDdkDz
 
   application_id: 0
   application_name: test
   application_domain: base.test.cyworks.jp
   application_ad_id: DUMMY_AD_ID
+  application_mobile_ad_id: DUMMY_AD_ID
   application_top: /test
+  application_mobile_top: /test
   
   author: CYWORKS
   author_email: developer@cyworks.jp

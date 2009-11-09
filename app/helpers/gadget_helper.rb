@@ -27,7 +27,7 @@ module GadgetHelper
   def button_to_external(name, options = {}, html_options = nil)
     button_to_function(name, external_function(options), html_options)
   end
-  
+
   def update_function(options = {})
     request_function(options, "#{JQUERY_VAR}.mixigadget.requestContainer")
   end
@@ -74,18 +74,18 @@ module GadgetHelper
       
       post_tag += "params[opensocial.Activity.Field.MEDIA_ITEMS] = mitems;\n"
     end
-    
+
     if options[:url]
       post_tag += "params[opensocial.Activity.Field.URL] = 'http://mixi.jp/run_appli.pl?id=#{AppResources[:application_id]}&'+gadgets.io.encodeValues({appParams: gadgets.json.stringify({url: '#{escape_javascript(url_for(options[:url]))}'})});\n"
     end
-    
+
     post_tag += "var activity = opensocial.newActivity(params);\n"
     post_tag += "opensocial.requestCreateActivity(activity, opensocial.CreateActivityPriority.HIGH, function(response) { #{options[:function]} });\n"
     post_tag
   end
-  
+
   def post_share_app(options = {})
-    "opensocial.requestShareApp('VIEWER_FRIENDS', null, function(response) { #{options[:function]} });\n"
+    "#{JQUERY_VAR}.mixigadget.requestInvite(#{options[:function]});\n"
   end
   
   def link_to_diary(name, title, body, mixi_id, html_options = nil)
@@ -127,7 +127,7 @@ module GadgetHelper
     html << %Q(</form>\n)
     html
   end
-  
+
   def mobile_gadget_link_to(name, options = {}, html_options = nil)
     if development?
       options[:opensocial_owner_id] ||= params[:opensocial_owner_id] if options.is_a?(Hash)
@@ -157,7 +157,7 @@ module GadgetHelper
   def mobile_gadget_url_for(options, with_transsid = true)
     @controller.send(:mobile_gadget_url_for, options, with_transsid)
   end
-  
+
   def mobile_gadget_paginating_links(paginator, options = {}, html_options = {})
     name = options[:name] || PaginatingFind::Helpers::DEFAULT_OPTIONS[:name]
     params = (options[:params] || PaginatingFind::Helpers::DEFAULT_OPTIONS[:params]).clone
@@ -234,5 +234,9 @@ module GadgetHelper
     function << ")"
 
     return function
+  end
+  
+  def development?
+    AppResources[:development]
   end
 end
