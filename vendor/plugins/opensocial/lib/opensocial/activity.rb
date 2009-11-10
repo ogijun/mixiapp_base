@@ -67,14 +67,14 @@ module OpenSocial #:nodoc:
     # group, or the default (@me, @self). A valid Connection is not necessary
     # if the request is to be used as part of an RpcRequest.
     def initialize(connection = nil, guid = '@me', selector = '@self',
-                   pid = nil)
+                   pid = nil, options = {})
       super
     end
     
     # Sends the request, passing in the appropriate SERVICE and specified
     # instance variables.
     def send
-      json = send_request(SERVICE, @guid, @selector, @pid)
+      json = send_request(SERVICE, @guid, @selector, @pid, @options)
 
       return parse_response(json['entry'])
     end

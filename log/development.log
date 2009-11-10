@@ -7828,3 +7828,11 @@ Processing TestController#index (for 192.168.11.100 at 2009-11-09 12:56:38) [GET
 Rendering template within layouts/application
 Rendering test/index
 Completed in 52ms (View: 15, DB: 3) | 200 OK [http://base.test.cyworks.jp/test?_sid=0d0575ad7c8635f7fe70d3657fe16184&nocache=20091109125639]
+  [4;36;1mSQL (12.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing GadgetController#index to xml (for 192.168.11.100 at 2009-11-11 01:55:12) [GET]
+  Parameters: {"v"=>"1257709842", "format"=>"xml", "action"=>"index", "controller"=>"gadget"}
+Rendering gadget/index
+Completed in 5886ms (View: 5466, DB: 28) | 200 OK [http://base.test.cyworks.jp/gadget.xml?v=1257709842]

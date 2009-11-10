@@ -42,30 +42,34 @@ module OpenSocial #:nodoc:
     # Defines the pid for the request.
     attr_accessor :pid
     
+    # Defines the options for the request.
+    attr_accessor :options
+    
     # Defines the key used to lookup the request result in an RPC request.
     attr_accessor :key
     
     # Initializes a request using the optionally supplied connection, guid,
     # selector, and pid.
-    def initialize(connection = nil, guid = nil, selector = nil, pid = nil)
+    def initialize(connection = nil, guid = nil, selector = nil, pid = nil, options = {})
       @connection = connection
       @guid = guid
       @selector = selector
       @pid = pid
+      @options = options
     end
     
     # Generates a request given the service, guid, selector, and pid, to the
     # OpenSocial endpoint by constructing the service URI and dispatching the
     # request. When data is returned, it is parsed as JSON after being
     # optionally unescaped.
-    def send_request(service, guid, selector = nil, pid = nil,
+    def send_request(service, guid, selector = nil, pid = nil, options = {},
                      unescape = false)
       if !@connection
         raise RequestException.new('Request requires a valid connection.')
       end
       
       uri = @connection.service_uri(@connection.container[:rest] + service,
-                                    guid, selector, pid)
+                                    guid, selector, pid, options)
       data = dispatch(uri)
       
       if unescape
@@ -75,13 +79,13 @@ module OpenSocial #:nodoc:
       end
     end
     
-    def post(service, post_data, guid, selector = nil, pid = nil, unescape = false)
+    def post(service, post_data, guid, selector = nil, pid = nil, options = {}, unescape = false)
       if !@connection
         raise RequestException.new('Request requires a valid connection.')
       end
       
       uri = @connection.service_uri(@connection.container[:rest] + service,
-                                    guid, selector, pid)
+                                    guid, selector, pid, options)
       data = dispatch(uri, post_data)
       
       if data.nil? || data.empty?

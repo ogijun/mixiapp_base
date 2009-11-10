@@ -66,15 +66,15 @@ module OpenSocial #:nodoc:
     # group, or the default (@me, @self). A valid Connection is not necessary
     # if the request is to be used as part of an RpcRequest.
     def initialize(connection = nil, guid = '@me', selector = '@self',
-                   aid = '@app')
-      super(connection, guid, selector, aid)
+                   aid = '@app', options = {})
+      super(connection, guid, selector, aid, options)
     end
     
     # Sends the request, passing in the appropriate SERVICE and specified
     # instance variables. Accepts an unescape parameter, defaulting to true,
     # if the returned data should be unescaped.
     def send(unescape = true)
-      json = send_request(SERVICE, @guid, @selector, @pid, unescape)
+      json = send_request(SERVICE, @guid, @selector, @pid, @options, unescape)
 
       return parse_response(json['entry'])
     end

@@ -18,13 +18,13 @@ class MixiApi
                                  :xoauth_requestor_id => requester_id)
   end
   
-  def get_person(guid = '@me', selector = '@self')
-    p = OpenSocial::FetchPersonRequest.new(@connection, guid, selector).send
+  def get_person(guid = '@me', selector = '@self', options = {})
+    p = OpenSocial::FetchPersonRequest.new(@connection, guid, selector, options).send
     convert_person(parse_json(p.to_json))
   end
   
-  def get_people(guid = '@me', selector = '@friends')
-    p = OpenSocial::FetchPeopleRequest.new(@connection, guid, selector).send
+  def get_people(guid = '@me', selector = '@friends', options = {})
+    p = OpenSocial::FetchPeopleRequest.new(@connection, guid, selector, options).send
     data = parse_json(p.to_json)
     data.each do |k, v|
       data[k] = convert_person(v)
@@ -32,13 +32,13 @@ class MixiApi
     data.values
   end
   
-  def get_activities(guid = '@me', selector = '@self', pid = '@app')
-    a = OpenSocial::FetchActivityRequest.new(@connection, guid, selector, pid).send
+  def get_activities(guid = '@me', selector = '@self', pid = '@app', options = {})
+    a = OpenSocial::FetchActivityRequest.new(@connection, guid, selector, pid, options).send
     parse_json(a.to_json)
   end
 
-  def get_appdata(guid = '@me', selector = '@self', aid = '@app')
-    a = OpenSocial::FetchAppDataRequest.new(@connection, guid, selector, pid).send
+  def get_appdata(guid = '@me', selector = '@self', aid = '@app', options = {})
+    a = OpenSocial::FetchAppDataRequest.new(@connection, guid, selector, pid, options).send
     parse_json(a.to_json)
   end
   
@@ -84,13 +84,13 @@ class MixiApi
   end
   
   def self.register_friendships(session, friend_mixi_ids)
-    owner = session[:owner]
+    owner = session[:owner].dup
     owner.friends = User.find(:all, :conditions => ["mixi_id in (?)", friend_mixi_ids], :select => "id, mixi_id")
     owner.save
   end
   
   def self.register_invite(session, invite_mixi_ids)
-    owner = session[:owner]
+    owner = session[:owner].dup
     invite_mixi_ids.each do |invite_mixi_id|
       app_invite = AppInvite.find_or_initialize_by_mixi_id_and_invitee_mixi_id(owner.mixi_id, invite_mixi_id)
       app_invite.invite_status = AppInvite::INVITE_STATUS_INVITED
@@ -102,8 +102,8 @@ class MixiApi
     return if !owner_id
     
     api = self.new(owner_id)
-    owner_data = api.get_person
-    friends_data = api.get_people
+    owner_data = api.get_person('@me', '@self', {})
+    friends_data = api.get_people('@me', '@friends', {:count => 1000})
     
 	self.register_user(session, owner_data)
 	self.register_friends(session, friends_data)
