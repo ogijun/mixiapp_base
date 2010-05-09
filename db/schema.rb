@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090816121127) do
+ActiveRecord::Schema.define(:version => 20091108181419) do
+
+  create_table "app_invites", :force => true do |t|
+    t.string   "mixi_id"
+    t.string   "invitee_mixi_id"
+    t.integer  "invite_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "app_invites", ["invitee_mixi_id"], :name => "index_app_invites_on_invitee_mixi_id"
+  add_index "app_invites", ["mixi_id", "invitee_mixi_id"], :name => "index_app_invites_on_mixi_id_and_invitee_mixi_id", :unique => true
 
   create_table "friends", :force => true do |t|
     t.integer  "user_id"
@@ -21,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20090816121127) do
   add_index "friends", ["user_id", "friend_id"], :name => "index_friends_on_user_id_and_friend_id", :unique => true
 
   create_table "sessions", :force => true do |t|
-    t.string   "session_id", :default => "", :null => false
+    t.string   "session_id", :null => false
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -31,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20090816121127) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
-    t.string   "mixi_id",       :default => "", :null => false
+    t.string   "mixi_id",       :null => false
     t.string   "nickname"
     t.string   "profile_url"
     t.string   "thumbnail_url"
