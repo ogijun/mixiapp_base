@@ -1,3 +1,5 @@
+# This file was auto-generated.  Feel free to customize it to your whim.
+
 common: &common
   session_key: _sid
   session_secret: Ng4CINK9QzoiUtinOLjHnGPQOHyDdkDz
@@ -38,6 +40,10 @@ common: &common
   development: false
   pc_available: true
   mobile_available: true
+
+  site_name: Test Site
+  admin_email: admin@test.com
+  site_url: http://localhost:3000/
 
 development:
   <<: *common

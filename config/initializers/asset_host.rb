@@ -1,1 +1,1 @@
-ActionController::Base.asset_host = "http://"+AppResources[:application_domain]
+ActionController::Base.asset_host = "http://"+configatron.application_domain

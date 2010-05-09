@@ -1,7 +1,9 @@
+require 'configatron'
+
 class MixiApi
   def initialize(requester)
     container = {
-      :endpoint     => AppResources[:api_endpoint],
+      :endpoint     => configatron.api_endpoint,
       :content_type => 'application/json',
       :rest         => ''
     }
@@ -13,8 +15,8 @@ class MixiApi
     end
     
     @connection = OpenSocial::Connection.new(:container => container,
-                                 :consumer_key => AppResources[:consumer_key],
-                                 :consumer_secret => AppResources[:consumer_secret],
+                                 :consumer_key => configatron.consumer_key,
+                                 :consumer_secret => configatron.consumer_secret,
                                  :xoauth_requestor_id => requester_id)
   end
   

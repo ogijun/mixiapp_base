@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-  <ModulePrefs title="<%= AppResources[:application_name] %>" author="<%= AppResources[:author] %>" author_email="<%= AppResources[:author_email] %>" description="">
+  <ModulePrefs title="<%= configatron.application_name %>" author="<%= configatron.author %>" author_email="<%= configatron.author_email %>" description="">
     <Require feature="opensocial-0.8" />
     <Require feature="views" />
     <Require feature="dynamic-height"/>
     <Require feature="flash" />
   </ModulePrefs>
-<% if AppResources[:pc_available] %>
+<% if configatron.pc_available %>
   <Content type="html" view="canvas,home,profile,preview">
     <![CDATA[
     
@@ -23,7 +23,7 @@
 
 <script type="text/javascript">
 (function(){
-  $('#gadget_container').mixigadget({base_url: 'http://<%= AppResources[:application_domain] %>'});
+  $('#gadget_container').mixigadget({base_url: 'http://<%= configatron.application_domain %>'});
 })();
 </script>
 <div id="gadget_container">Now Loading...</div>
@@ -36,7 +36,7 @@
 <!-- MIXI AD PROGRAM -->
 <script type="text/javascript">/*<!--[*/
 (function(){
-       var url = "http://<%= AppResources[:mixi_domain] %>/ad_application_program_invoker.pl?appli_id=<%= AppResources[:application_id] %>&ad_id=<%= AppResources[:application_ad_id] %>";
+       var url = "http://<%= configatron.mixi_domain %>/ad_application_program_invoker.pl?appli_id=<%= configatron.application_id %>&ad_id=<%= configatron.application_ad_id %>";
         document.writeln(['<scri','pt src="',url,'&ts=',(new Date).getTime(),'">','</scri','pt>'].join(''));
 })();
 --></script>
@@ -45,8 +45,8 @@
     ]]> 
   </Content>
 <% end %>
-<% if AppResources[:mobile_available] %>
-  <Content type="url" view="mobile" href="http://<%= AppResources[:application_domain] %><%= AppResources[:application_mobile_top] %>" />
+<% if configatron.mobile_available %>
+  <Content type="url" view="mobile" href="http://<%= configatron.application_domain %><%= configatron.application_mobile_top %>" />
 <% end %>
 
 </Module>

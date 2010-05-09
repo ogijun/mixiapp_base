@@ -114,7 +114,7 @@ class ApplicationController < ActionController::Base
         options[:nocache] = DateTime.current.strftime("%Y%m%d%H%M%S")
       end
     end
-    url = "http://#{AppResources[:mixi_mobile_domain]}/#{AppResources[:application_id]}/?url="
+    url = "http://#{configatron.mixi_mobile_domain}/#{configatron.application_id}/?url="
     url << CGI.escape(url_for(options))
     url << "&amp;guid=ON" if request.mobile.is_a?(Jpmobile::Mobile::Docomo)
     url

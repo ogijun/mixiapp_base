@@ -5,8 +5,8 @@
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
-  :key         => AppResources[:session_key],
-  :secret      => AppResources[:session_secret],
+  :key         => configatron.session_key,
+  :secret      => configatron.session_secret,
   :expire_after=> 10.minutes,
   :cookie_only => false
 }

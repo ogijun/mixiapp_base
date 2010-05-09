@@ -76,7 +76,7 @@ module GadgetHelper
     end
 
     if options[:url]
-      post_tag += "params[opensocial.Activity.Field.URL] = 'http://mixi.jp/run_appli.pl?id=#{AppResources[:application_id]}&'+gadgets.io.encodeValues({appParams: gadgets.json.stringify({url: '#{escape_javascript(url_for(options[:url]))}'})});\n"
+      post_tag += "params[opensocial.Activity.Field.URL] = 'http://mixi.jp/run_appli.pl?id=#{configatron.application_id}&'+gadgets.io.encodeValues({appParams: gadgets.json.stringify({url: '#{escape_javascript(url_for(options[:url]))}'})});\n"
     end
 
     post_tag += "var activity = opensocial.newActivity(params);\n"
@@ -237,6 +237,6 @@ module GadgetHelper
   end
   
   def development?
-    AppResources[:development]
+    true # TODO: Fix it.
   end
 end
