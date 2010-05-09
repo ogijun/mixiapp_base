@@ -19,11 +19,11 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem "locale"
-  config.gem "locale_rails", :version => '2.0.4'
-  config.gem "gettext"
-  config.gem "gettext_activerecord", :version => '2.0.4'
-  config.gem "gettext_rails", :version => '2.0.4'
+  # config.gem "locale"
+  # config.gem "locale_rails", :version => '2.0.4'
+  # config.gem "gettext"
+  # config.gem "gettext_activerecord", :version => '2.0.4'
+  # config.gem "gettext_rails", :version => '2.0.4'
   config.gem "json"
   config.gem "mocha"
   config.gem "packet"

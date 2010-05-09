@@ -2,8 +2,8 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  GetText.locale = "ja"
-  init_gettext "application"
+  # GetText.locale = "ja"
+  # init_gettext "application"
   helper :all # include all helpers, all the time
   helper_method :current_owner, :current_viewer, :is_owner?, :is_friend?
   #protect_from_forgery # See ActionController::RequestForgeryProtection for details
