@@ -1,9 +1,0 @@
-{
-  "entry" : {
-    "id" : "example.org:34KJDCSKJN2HHF0DW20394",
-    "name" : {"unstructured" : "Jane Doe"},
-    "gender" : {"displayvalue" : "女性", "key" : "FEMALE"},
-    "isOwner" : true,
-    "isViewer" : true
-  }
-}

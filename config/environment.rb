@@ -25,10 +25,11 @@ Rails::Initializer.run do |config|
   # config.gem "gettext_activerecord", :version => '2.0.4'
   # config.gem "gettext_rails", :version => '2.0.4'
   config.gem "json"
+  config.gem "oauth"
+  config.gem "opensocial"
   config.gem "mocha"
   config.gem "packet"
   config.gem "chronic"
-  config.gem "oauth"
   config.gem "configatron"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
